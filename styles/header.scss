@@ -1,0 +1,79 @@
+@import "variables";
+
+.top-nav {
+  height: 95px;
+  background-color: #000;
+  padding: 0 25px;
+  display: flex;
+
+  .logo {
+    align-self: center;
+    min-width: 112px;
+    height: 48px;
+    background: url("https://static-media-prod-cdn.sumo.mozilla.net/static/sumo/img/mozilla-support-white.35b1f3cc6003.svg") center no-repeat;
+    margin-top: 0;
+    margin-right: 20px;
+  }
+
+  svg {
+    height: 32px;
+    width: 50px;
+    padding-right: 5px;
+    display: flex;
+    fill: #FFF;
+  }
+
+  a {
+    color: #FFF;
+  }
+}
+
+.nav-menu {
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+
+  ul,
+  li {
+    display: flex;
+    align-items: center;
+  }
+
+  li {
+    padding-left: 15px;
+  }
+}
+
+.volunteer-button {
+  padding: 2px 20px;
+  line-height: 3.7rem;
+  border: 2px solid #FFF;
+  border-radius: 3.7rem;
+  transition: all .15s ease-in-out;
+
+  &:hover,
+  &:visited,
+  &:focus {
+    text-decoration: none;
+  }
+
+  &:hover {
+    background-color: #f4f1f1;
+    border-color: #f4f1f1;
+    color: #000;
+  }
+}
+
+header {
+  @media screen and (max-width: 768px) {
+    .nav-menu {
+      justify-content: flex-end;
+    }
+
+    ul li:first-child {
+      display: none;
+    }
+  }
+
+}

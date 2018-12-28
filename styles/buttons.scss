@@ -1,0 +1,55 @@
+button,
+textarea {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+}
+
+textarea {
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, .1);
+  resize: vertical;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.btn-l {
+  display: inline-block;
+  text-align: center;
+  color: #FFF;
+  background-color: #000;
+  min-width: 180px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  line-height: 5rem;
+  border-radius: 2px;
+  text-decoration: none;
+  border: 2px solid #000;
+  transition: all .1s ease-in-out;
+
+  &:hover,
+  &:visited,
+  &:focus {
+    text-decoration: none;
+    color: #FFF;
+  }
+
+  &:hover {
+    background-color: #FFF;
+    color: #000;
+  }
+
+  &:focus {
+    background-color: #000;
+    outline: none;
+    color: #808080;
+  }
+}
+
+input[type="submit"] {
+  cursor: pointer;
+}

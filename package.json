@@ -1,0 +1,19 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf .cache/ && rm -rf dist/ && rm -rf node_modules/",
+    "start": "parcel index.html",
+    "prod": "parcel build index.html --public-url='./'"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^9.4.3",
+    "node-sass": "^4.11.0",
+    "parcel-bundler": "^1.11.0",
+    "sass": "^1.15.2"
+  }
+}
