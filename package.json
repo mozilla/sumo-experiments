@@ -5,15 +5,16 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf .cache/ && rm -rf dist/ && rm -rf node_modules/",
-    "start": "parcel index.html",
-    "prod": "parcel build index.html --public-url='./'"
+    "dev": "node node_modules/parcel-bundler/lib/cli.js index.html",
+    "prod": "node node_modules/parcel-bundler/lib/cli.js build index.html  --public-url='./'"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^9.4.3",
     "node-sass": "^4.11.0",
-    "parcel-bundler": "^1.11.0",
+    "parcel-bundler": "1.7.1",
     "sass": "^1.15.2"
-  }
+  },
+  "dependencies": {}
 }

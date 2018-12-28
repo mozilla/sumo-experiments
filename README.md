@@ -7,13 +7,14 @@ Node.js ^8.x.x
 
 ```bash
 yarn
-yarn start
+yarn dev
 ```
 
 ## Production
 
 build:
 ```bash
+yarn
 yarn prod
 ```
 
