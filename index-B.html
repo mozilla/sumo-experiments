@@ -75,111 +75,171 @@
         </div>
     </header>
 
-    <div class="search-form-large">
+    <div class="search-form-large option-b">
         <div class="search-inner">
-            <form data-instant-search="form"
-              id="support-search-wiki"
-              action="/en-US/search" method="get"
-              class="simple-search-form"
-        >
-            <input type="hidden" name="product" value="firefox">
-            <input type="search" name="q"
-                   required="required"
-                   aria-required="true"
-                   placeholder="Find help..."
-                   class="searchbox"
-                   id="search-q2">
-            <button type="submit" title="Send" class="submit-button"></button>
+            <div class="categories">
 
-            <div class="search-results">
-                <div class="title">Related articles:</div>
-                <ul>
-                    <li>
-                        <a href="#">Private Browsing - Use Firefox without saving history</a>
-                    </li>
-                    <li>
-                        <a href="#">How do I tell if my connection to a website is secure?</a>
-                    </li>
-                    <li>
-                        <a href="#">Does Firefox share my location with websites?</a>
-                    </li>
-                    <li>
-                        <a href="#">Disable third-party cookies in Firefox to stop some types of tracking by
-                            advertisers</a>
-                    </li>
-                </ul>
+                <div class="title js-toggle">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <span>Categories</span>
+                    <div class="overlay"></div>
+                </div>
+
+                <div class="categories-wrap">
+                    <div class="home">
+                        <img src="https://prod-cdn.sumo.mozilla.net/uploads/products/2018-10-03-20-09-07-d6a5c9.png" height="48" width="48" alt="">
+                        <span>Firefox</span>
+                    </div>
+
+                    <div class="list">
+                        <div class="acc">
+                            <input id="acc-1" type="checkbox" class="sr-only">
+                            <label for="acc-1" class="title">Basic Browsing</label>
+
+                            <ul class="articles">
+                                <li><a href="#">Cookies and Cache</a></li>
+                                <li><a href="#">Insecure password</a></li>
+                                <li><a href="#">Do Not Track feature</a></li>
+                                <li><a href="#">Malware Protection work</a></li>
+                                <li><a href="#">Two-step authentication</a></li>
+                            </ul>
+                        </div>
+                        <div class="acc">
+                            <input id="acc-2" type="checkbox" class="sr-only">
+                            <label for="acc-2" class="title">Basic Browsing</label>
+
+                            <ul class="articles">
+                                <li><a href="#">Cookies and Cache</a></li>
+                                <li><a href="#">Insecure password</a></li>
+                                <li><a href="#">Do Not Track feature</a></li>
+                                <li><a href="#">Malware Protection work</a></li>
+                                <li><a href="#">Two-step authentication</a></li>
+                            </ul>
+                        </div>
+                        <div class="acc">
+                            <input id="acc-3" type="checkbox" class="sr-only">
+                            <label for="acc-3" class="title">Basic Browsing</label>
+
+                            <ul class="articles">
+                                <li><a href="#">Cookies and Cache</a></li>
+                                <li><a href="#">Insecure password</a></li>
+                                <li><a href="#">Do Not Track feature</a></li>
+                                <li><a href="#">Malware Protection work</a></li>
+                                <li><a href="#">Two-step authentication</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-        </form>
+
+            <form data-instant-search="form"
+                  id="support-search-wiki"
+                  action="/en-US/search" method="get"
+                  class="simple-search-form"
+            >
+                <input type="hidden" name="product" value="firefox">
+                <input type="search" name="q"
+                       required="required"
+                       aria-required="true"
+                       placeholder="Find help..."
+                       class="searchbox"
+                       id="search-q2">
+                <button type="submit" title="Send" class="submit-button"></button>
+
+                <div class="search-results">
+                    <div class="title">Related articles:</div>
+                    <ul>
+                        <li>
+                            <a href="#">Private Browsing - Use Firefox without saving history</a>
+                        </li>
+                        <li>
+                            <a href="#">How do I tell if my connection to a website is secure?</a>
+                        </li>
+                        <li>
+                            <a href="#">Does Firefox share my location with websites?</a>
+                        </li>
+                        <li>
+                            <a href="#">Disable third-party cookies in Firefox to stop some types of tracking by
+                                advertisers</a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
         </div>
     </div>
 
-    <div id="breadcrumbs">
-        <ul class="breadcrumbs">
-            <li>
-                <div class="drop-menu">
-                    <ul>
-                        <li><a href="#">Do more with apps</a></li>
-                        <li class="active">
-                            <a href="#">Protect your privacy</a>
-                        </li>
-                        <li><a href="#">Manage preferences and add-ons</a></li>
-                        <li><a href="#">Fix problems</a></li>
-                        <li><a href="#">Save and sync</a></li>
-                        <li><a href="#">Update and install</a></li>
-                        <li><a href="#">Preferences and add-ons</a></li>
-                        <li><a href="#">Apps</a></li>
-                    </ul>
-                </div>
+    <!--<div id="breadcrumbs">-->
+        <!--<ul class="breadcrumbs">-->
+            <!--<li>-->
+                <!--<div class="drop-menu">-->
+                    <!--<ul>-->
+                        <!--<li><a href="#">Do more with apps</a></li>-->
+                        <!--<li class="active">-->
+                            <!--<a href="#">Protect your privacy</a>-->
+                        <!--</li>-->
+                        <!--<li><a href="#">Manage preferences and add-ons</a></li>-->
+                        <!--<li><a href="#">Fix problems</a></li>-->
+                        <!--<li><a href="#">Save and sync</a></li>-->
+                        <!--<li><a href="#">Update and install</a></li>-->
+                        <!--<li><a href="#">Preferences and add-ons</a></li>-->
+                        <!--<li><a href="#">Apps</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
 
-                <div class="step">
-                    <img
-                            class="logo"
-                            src="https://prod-cdn.sumo.mozilla.net/uploads/products/2018-10-03-20-09-07-d6a5c9.png"
-                            height="48"
-                            width="48"
-                            alt=""
-                    />
-                    Firefox
-                </div>
-            </li>
-            <li>
-                <div class="drop-menu">
-                    <ul>
-                        <li class="active">
-                            <a href="#">Cash and cookies</a>
-                        </li>
-                        <li><a href="#">Manage preferences and add-ons</a></li>
-                        <li><a href="#">Fix problems</a></li>
-                    </ul>
-                </div>
-                <div class="step">Protect your privacy</div>
-            </li>
-            <li>
-                <div class="drop-menu">
-                    <ul>
-                        <li><a href="#">Save and sync</a></li>
-                        <li><a href="#">Update and install</a></li>
-                        <li><a href="#">Preferences and add-ons</a></li>
-                        <li><a href="#">Apps</a></li>
-                        <li><a href="#">Save and sync</a></li>
-                        <li><a href="#">Update and install</a></li>
-                        <li><a href="#">Preferences and add-ons</a></li>
-                        <li><a href="#">Apps</a></li>
-                        <li><a href="#">Save and sync</a></li>
-                        <li class="active">
-                            <a href="#">Update and install</a>
-                        </li>
-                        <li><a href="#">Preferences and add-ons</a></li>
-                        <li><a href="#">Apps</a></li>
-                    </ul>
-                </div>
-                <div class="step">Cookies and cache</div>
-            </li>
-            <li>
-                <div>Updates and Install</div>
-            </li>
-        </ul>
-    </div>
+                <!--<div class="step">-->
+                    <!--<img-->
+                            <!--class="logo"-->
+                            <!--src="https://prod-cdn.sumo.mozilla.net/uploads/products/2018-10-03-20-09-07-d6a5c9.png"-->
+                            <!--height="48"-->
+                            <!--width="48"-->
+                            <!--alt=""-->
+                    <!--/>-->
+                    <!--Firefox-->
+                <!--</div>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<div class="drop-menu">-->
+                    <!--<ul>-->
+                        <!--<li class="active">-->
+                            <!--<a href="#">Cash and cookies</a>-->
+                        <!--</li>-->
+                        <!--<li><a href="#">Manage preferences and add-ons</a></li>-->
+                        <!--<li><a href="#">Fix problems</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+                <!--<div class="step">Protect your privacy</div>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<div class="drop-menu">-->
+                    <!--<ul>-->
+                        <!--<li><a href="#">Save and sync</a></li>-->
+                        <!--<li><a href="#">Update and install</a></li>-->
+                        <!--<li><a href="#">Preferences and add-ons</a></li>-->
+                        <!--<li><a href="#">Apps</a></li>-->
+                        <!--<li><a href="#">Save and sync</a></li>-->
+                        <!--<li><a href="#">Update and install</a></li>-->
+                        <!--<li><a href="#">Preferences and add-ons</a></li>-->
+                        <!--<li><a href="#">Apps</a></li>-->
+                        <!--<li><a href="#">Save and sync</a></li>-->
+                        <!--<li class="active">-->
+                            <!--<a href="#">Update and install</a>-->
+                        <!--</li>-->
+                        <!--<li><a href="#">Preferences and add-ons</a></li>-->
+                        <!--<li><a href="#">Apps</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+                <!--<div class="step">Cookies and cache</div>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<div>Updates and Install</div>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
 
     <div id="main-content">
         <article class="section">

@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf .cache/ && rm -rf dist/ && rm -rf node_modules/",
-    "dev": "node node_modules/parcel-bundler/lib/cli.js index.html",
-    "prod": "node node_modules/parcel-bundler/lib/cli.js build index.html  --public-url='./'"
+    "clean": "rm -rf .cache/ && rm -rf dist/",
+    "dev": "node node_modules/parcel-bundler/lib/cli.js index.html index-B.html",
+    "devb": "node node_modules/parcel-bundler/lib/cli.js index-B.html",
+    "prod": "node node_modules/parcel-bundler/lib/cli.js build index-B.html --public-url='./'"
   },
   "author": "",
   "license": "ISC",

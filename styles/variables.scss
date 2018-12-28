@@ -18,6 +18,7 @@ $tablet: 768px;
 @mixin component-wrap($width: $total-width) {
   margin-left: auto;
   margin-right: auto;
+  width: 100%;
   padding: 0 $gutter * 1px;
   max-width: $width;
 }

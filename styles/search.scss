@@ -9,8 +9,11 @@ $border-color-1: #D1D5D7;
   padding-top: 60px;
   padding-bottom: 60px;
 
+  .inner {
+      @include component-wrap;
+  }
+
   form {
-    @include component-wrap;
     position: relative;
     z-index: 101;
   }

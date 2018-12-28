@@ -1,12 +1,21 @@
 function fn() {
+    // categories nav
+    (function() {
+        var toggle = document.querySelector('.js-toggle');
+
+        if(toggle !== null) {
+            toggle.addEventListener('click', function(e) {
+                e.target.parentNode.classList.toggle('visible')
+            })
+        }
+    })();
+
+
     // Slider: swiperjs https://idangero.us/swiper/
     (function() {
         var slider = new Swiper('.swiper-container', {
-            // slidesPerView: 'auto',
             slidesPerView: 3,
             spaceBetween: 30,
-            // wrapperClass: 'slides',
-            // slideClass: 'slide',
             navigation: {
                 prevEl: '.swiper-container .prev',
                 nextEl: '.swiper-container .next',

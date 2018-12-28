@@ -11,4 +11,6 @@ import './styles/breadcrumbs.scss';
 import './styles/article.scss';
 import './styles/related.scss';
 
+import './styles/option-b.scss'
+
 import './scripts/script.js'
