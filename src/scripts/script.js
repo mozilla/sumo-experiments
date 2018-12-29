@@ -28,7 +28,6 @@ function fn() {
         }
     })();
 
-
     // Slider: swiperjs https://idangero.us/swiper/
     (function() {
         var slider = new Swiper('.swiper-container', {
@@ -83,7 +82,7 @@ function fn() {
         }
     })();
 
-    // TODO: remove // temp search reltated articles
+    // TODO: remove // temp search related articles
     (function() {
         var search = document.getElementById('search-q2');
         var results = document.querySelector('.search-form-large .search-results');
@@ -136,7 +135,7 @@ function fn() {
         function setState(data, target) {
             var list = target.parentNode.querySelectorAll('.drop-menu ul li').length;
             var rightColumns = Math.floor((window.innerWidth - (data.left + liWidth))/liWidth) + 1;
-            var leftColumns = Math.floor(data.left/liWidth) + 1;
+            var leftColumns = Math.floor(data.left/liWidth);
 
             state.direction = leftColumns > rightColumns || toLeft(data);
 

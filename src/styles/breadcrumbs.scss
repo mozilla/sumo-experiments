@@ -5,7 +5,9 @@ $slash-color: #BEBEBE;
 $bc: #EDEDF0;
 
 #breadcrumbs {
-  position: relative;
+  position: sticky;
+  top: 0;
+  background: #FFF;
   padding: 0 $gutter*1px;
   margin: 20px auto;
   max-width: $total-width;
@@ -149,7 +151,6 @@ $bc: #EDEDF0;
   }
 
   li:hover {
-  //li {
     .step {
       z-index: 100;
 
