@@ -73,9 +73,7 @@ function fn() {
 
         if(search !== null && results !== null) {
             search.setAttribute('autocomplete', 'off');
-
             search.addEventListener('input', listener);
-
             document.addEventListener('click', hideResults, false);
 
             function hideResults() {
