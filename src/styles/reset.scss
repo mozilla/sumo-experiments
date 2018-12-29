@@ -124,6 +124,10 @@ q:before {
   outline: none;
 }
 
+input[type='search'] {
+  -webkit-appearance: textfield;
+}
+
 /* Utility classes
  * *********************************** */
 
@@ -131,5 +135,5 @@ q:before {
   position: absolute;
   clip: rect(1px, 1px, 1px, 1px);
   left: -9999px;
-  top: -9999px;
+  //top: -9999px;
 }

@@ -22,12 +22,6 @@ $grey: #868686;
     font-family: $opensans;
   }
 
-  i {
-    line-height: 33px;
-    font-family: 'FontAwesome';
-    font-style: normal;
-  }
-
   a,
   p,
   li {
@@ -47,10 +41,26 @@ $grey: #868686;
 .social-links {
   display: flex;
   margin-top: 20px;
+  margin-left: -12px;
 
   a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-size: 16px;
     text-decoration: none;
-    margin-right: 20px;
+
+    &.twitter {
+      background: url('../images/twitter.svg') center no-repeat;
+    }
+
+    &.youtube {
+      background: url('../images/youtube.svg') center no-repeat;
+    }
+
+    &.instagram {
+      background: url('../images/instagram.svg') center no-repeat;
+    }
   }
 }
 
@@ -143,20 +153,6 @@ $grey: #868686;
 
   .footer-logo a {
     margin-bottom: 30px;
-  }
-
-  .footer-social {
-    i {
-      font-family: 'FontAwesome';
-      color: #ffffff;
-      font-style: normal;
-      font-size: 32px;
-      position: absolute;
-    }
-    a {
-      text-decoration: none;
-      margin-right: 20px;
-    }
   }
 
   .footer-accordion {
