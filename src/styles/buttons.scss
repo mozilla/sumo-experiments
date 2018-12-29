@@ -1,3 +1,5 @@
+@import 'variables.scss';
+
 button,
 textarea {
   border: none;
@@ -47,6 +49,12 @@ textarea {
     background-color: #000;
     outline: none;
     color: #808080;
+  }
+
+  @media (max-width: $mobile) {
+    font-size: 1.3rem;
+    line-height: 4.5rem;
+    width: 100%;
   }
 }
 

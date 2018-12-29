@@ -3,8 +3,8 @@
 $border-color: #E5E7E8;
 $shadow: 0 5px 22px -2px rgba(23, 49, 83, .08);
 
-.wiki-related-documents h2 {
-  margin-bottom: 20px;
+.wiki-related-documents h1 {
+  margin-bottom: 3rem;
 }
 
 // slider
@@ -56,7 +56,7 @@ $slidernav-color: #0060DF;
         font-size: 2.2rem;
         line-height: 3.3rem;
         margin: 0 0 30px;
-        font-weight: 500;
+        font-weight: 600;
       }
 
       p {
@@ -75,12 +75,40 @@ $slidernav-color: #0060DF;
     left: 0;
     right: auto;
     border-radius: 100%;
-    background: $slidernav-color url('../images/arrow.svg') center no-repeat;
+    //background: $slidernav-color url('../images/arrow.svg') center no-repeat;
+    background: $slidernav-color;
+    border: 2px solid $slidernav-color;
     height: 42px;
     width: 42px;
     cursor: pointer;
     outline: none;
+    transition: all .15s ease-in-out;
     z-index: 2;
+
+    &:hover {
+      background-color: #FFF;
+
+      svg path {
+        fill: $slidernav-color;
+        stroke: $slidernav-color;
+      }
+    }
+
+    &:active {
+      background-color: $slidernav-color;
+
+      svg path {
+        fill: lighten($slidernav-color, 20%);
+        stroke: lighten($slidernav-color, 20%);
+      }
+    }
+
+    svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 
   .next {

@@ -2,10 +2,28 @@ function fn() {
     // categories nav
     (function() {
         var toggle = document.querySelector('.js-toggle');
+        var labels = document.querySelectorAll('.acc label');
 
         if(toggle !== null) {
             toggle.addEventListener('click', function(e) {
                 e.target.parentNode.classList.toggle('visible')
+            })
+        }
+
+        if(labels.length) {
+            labels = Array.prototype.slice.call(labels);
+
+            labels.forEach(function(item) {
+                item.addEventListener('click', function(e) {
+                    var target = e.target;
+                    var input = target.parentNode.querySelector('input[type="radio"]');
+
+                    if(input !== null) {
+                        e.preventDefault();
+                        input.checked = !input.checked;
+                    }
+
+                })
             })
         }
     })();

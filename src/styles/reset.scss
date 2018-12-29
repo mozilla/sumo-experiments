@@ -124,8 +124,12 @@ q:before {
   outline: none;
 }
 
-input[type='search'] {
-  -webkit-appearance: textfield;
+button,
+input[type='search'],
+input[type='submit'],
+input.btn {
+  -webkit-appearance:none;
+  -webkit-border-radius:0;
 }
 
 /* Utility classes
