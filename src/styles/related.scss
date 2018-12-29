@@ -28,6 +28,7 @@ $slidernav-color: #0060DF;
   .swiper-slide {
     display: flex;
     flex-direction: column;
+    height: auto;
 
     a {
       height: 100%;
@@ -91,6 +92,7 @@ $slidernav-color: #0060DF;
   }
 
   .swiper-button-disabled {
+    opacity: 0;
     cursor: initial;
     background-color: lighten($slidernav-color, 20%)
   }

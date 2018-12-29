@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf .cache/ && rm -rf dist/",
     "dev": "node node_modules/parcel-bundler/lib/cli.js ./src/index.html",
-    "dev2": "node node_modules/parcel-bundler/lib/cli.js ./src/index-b.html",
+    "dev-b": "node node_modules/parcel-bundler/lib/cli.js ./src/index-b.html",
     "prod1": "node node_modules/parcel-bundler/lib/cli.js build ./src/index.html --public-url='./' --no-source-maps --no-minify --no-cache",
     "prod2": "node node_modules/parcel-bundler/lib/cli.js build ./src/index-b.html --public-url='./' --no-source-maps --no-minify --no-cache",
     "prod": "npm run prod1 && npm run prod2"

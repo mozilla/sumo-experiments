@@ -129,7 +129,6 @@ function fn() {
             } else {
                 state.transformLeft = 0
             }
-
         }
 
         function hoverListener(e) {
