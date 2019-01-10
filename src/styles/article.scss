@@ -1,0 +1,283 @@
+@import "variables";
+
+$color-1: #0A84FF;
+$bookmark: '../images/icon-bookmark-1.svg';
+
+#doc-content {
+  .wiki-image {
+    padding: 5px 0;
+    vertical-align: middle;
+
+    dt {
+      margin-bottom: 4rem;
+
+      @media (max-width: $tablet) {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
+
+.highlighter {
+  background-color: #FFF8D4;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+article {
+  ol {
+    counter-reset: custom-counter;
+
+    > li {
+      counter-increment: custom-counter;
+      margin-bottom: 20px;
+      position: relative;
+      padding-left: 36px;
+
+      &:before {
+        font-size: 1.2rem;
+        line-height: 22px;
+        content: counter(custom-counter) ' ';
+        color: $color-1;
+        border: 1px solid rgba($color-1, .13);
+        background-color: rgba($color-1, .03);
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        margin-right: 12px;
+        position: absolute;
+        top: 4px;
+        left: 0;
+      }
+    }
+  }
+
+  .note {
+    color: #737373;
+    margin: 4rem 0 10rem;
+    background-color: #F9F9FA;
+    padding: 28px 30px;
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+#toc {
+  margin: 8rem 0 10rem;
+
+  ul {
+    margin-top: 20px;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  li a {
+    position: relative;
+    padding-left: 2.5rem;
+
+    &:before {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      content: '';
+      height: 16px;
+      width: 13px;
+      background: url($bookmark) center no-repeat;
+      background-size:contain;
+    }
+
+    span {
+      display: inline;
+
+      &.tocnumber {
+        display: none;
+      }
+    }
+  }
+
+  @media (max-width: $tablet) {
+    margin: 6rem 0;
+  }
+}
+
+
+/**
+* vote-wrap
+*/
+$votes-shadow: 0 9px 14px -9px rgba(0, 0, 0, .5);
+
+.vote-wrap {
+  margin: 100px 0 150px;
+  border-radius: 2px;
+  color: #4A4A4F;
+  font-size: 1.8rem;
+
+  .document-vote {
+    background-color: #F7FAFE;
+    padding: 40px;
+  }
+
+  * {
+    margin: 0;
+  }
+
+  .helpful {
+    display: flex;
+    align-items: center;
+  }
+
+  .header {
+    font-weight: 600;
+    flex: 1;
+  }
+
+  .votes {
+    box-shadow: $votes-shadow;
+    border-radius: 25px;
+    overflow: hidden;
+  }
+
+  .wait {
+    display: none;
+  }
+
+  .votes > .btn {
+    border: 0;
+    width: 50px;
+    height: 40px;
+    margin: 0;
+    font-size: 2rem;
+    background: #FFF;
+    cursor: pointer;
+
+    &[name="helpful"] {
+      padding: 1px 10px 1px 16px;
+    }
+
+    &[name="not-helpful"] {
+      padding: 1px 16px 1px 10px;
+    }
+
+    &:hover,
+    &:focus {
+      outline: none;
+      background-color: #E8F2FF;
+    }
+  }
+
+  @media (max-width: $tablet) {
+    margin: 80px $gutter * -1px;
+
+    .header {
+      margin-bottom: 30px;
+    }
+
+    .helpful {
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
+
+#not-helpful-container {
+  display: none;
+  background-color: #F7FAFE;
+  padding: 40px;
+
+  &.visible {
+    display: block;
+  }
+
+  .title {
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+    font-weight: bold;
+    font-family: $opensans;
+    margin-bottom: 30px;
+  }
+
+  label {
+    display: block;
+    margin: 0 1px 8px;
+  }
+
+  textarea {
+    margin-top: 40px;
+    padding: 20px;
+    width: 100%;
+    background-color: #FFF;
+  }
+
+  [type="submit"] {
+    margin-top: 40px;
+  }
+
+  @media (max-width: $tablet) {
+    .title,
+    label span,
+    textarea {
+      font-size: 1.5rem;
+      line-height: 2.7rem;
+      margin-bottom: 2.7rem;
+    }
+
+    .title {
+      margin-bottom: 15px;
+    }
+
+    textarea {
+      margin-top: 15px;
+    }
+
+    input[type="submit"] {
+      margin-top: 20px;
+    }
+  }
+}
+
+#helpful-container {
+  padding: 40px 40px 10px;
+  background-color: #F4FEF3;
+  border-radius: 2px;
+  display: none;
+  margin-top: 30px;
+
+  &.visible {
+    display: block;
+  }
+
+  p {
+    margin-bottom: 30px;
+  }
+
+  svg {
+    margin-right: 10px;
+  }
+}
+
+
+/**
+* contributors
+*/
+$c-color: #737373;
+
+.contributors {
+  margin-bottom: 32px;
+
+  .user {
+    font-size: 1.6rem;
+    line-height: 3.3rem;
+    color: $c-color;
+    text-decoration: underline;
+  }
+}
+
+.help-link {
+  margin: 20px 0 60px;
+}

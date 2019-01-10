@@ -1,0 +1,198 @@
+@import "variables";
+
+$grey: #868686;
+
+#footer {
+  padding-top: 48px;
+  padding-bottom: 48px;
+  background-color: #000;
+
+  > div {
+    @include component-wrap;
+  }
+}
+
+.inner {
+  h5 {
+    font-size: 2.2rem;
+    line-height: 2;
+    margin: 0 0 10px;
+    color: #ffffff;
+    font-weight: 600;
+    font-family: $opensans;
+  }
+
+  a,
+  p,
+  li {
+    color: #FFF;
+    margin: 0;
+  }
+}
+
+.footer-logo a {
+  display: block;
+
+  img {
+    width: 84px;
+  }
+}
+
+.social-links {
+  display: flex;
+  margin-top: 20px;
+  margin-left: -12px;
+
+  a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-size: 16px;
+    text-decoration: none;
+
+    &.twitter {
+      background: url('../images/twitter.svg') center no-repeat;
+    }
+
+    &.youtube {
+      background: url('../images/youtube.svg') center no-repeat;
+    }
+
+    &.instagram {
+      background: url('../images/instagram.svg') center no-repeat;
+    }
+  }
+}
+
+.lower-menu {
+  margin-top: 30px;
+  font-size: 1.2rem;
+
+  a {
+    display: inline-block;
+    margin: 5px 0;
+  }
+
+  a:not(:last-child) {
+    margin-right: 20px;
+  }
+}
+
+.license {
+  margin-top: 10px;
+
+  a,
+  p {
+    font-size: 1.2rem;
+    margin: 0;
+    line-height: 2.2rem;
+  }
+
+  a {
+    color: $grey;
+  }
+}
+
+.language-picker {
+  color: #FFF;
+  font-size: 1.2rem;
+  white-space: nowrap;
+}
+
+.footer-accordion {
+  display: flex;
+  justify-content: space-evenly;
+
+  .toggle-bar li {
+    margin-bottom: 10px;
+  }
+
+  input {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .inner {
+    .row {
+      display: flex;
+      width: 100%;
+    }
+  }
+
+  .license {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .language-picker {
+    margin-left: 20px;
+  }
+
+  .footer-accordion {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+
+    > li {
+      margin-right: 25px;
+      margin-left: 25px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main-nav {
+    flex-direction: column;
+  }
+
+  .language-picker {
+    margin-top: 30px;
+  }
+
+  .footer-logo a {
+    margin-bottom: 30px;
+  }
+
+  .footer-accordion {
+    flex-direction: column;
+
+    label {
+      cursor: pointer;
+    }
+
+    h5 {
+      position: relative;
+      border-bottom: 1px solid #979797;
+
+      &::after {
+        position: absolute;
+        right: 10px;
+        top: calc(50% - 10px);
+        background: url("../images/chevron-down.svg") center no-repeat;
+        content: '';
+        width: 20px;
+        height: 18px;
+        align-self: center;
+        transition: all .15s ease-in-out;
+      }
+    }
+
+    .toggle-bar {
+      max-height: 0;
+      overflow: hidden;
+      transition: all 1s ease-in-out;
+    }
+
+    input[type="radio"]:checked {
+      ~ .toggle-bar {
+        max-height: 1000px;
+      }
+
+      + label > h5::after {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

@@ -1,0 +1,131 @@
+@import "variables";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $opensans;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $zilla;
+  font-weight: normal;
+}
+
+h1 {
+  @include display-1;
+}
+
+h2 {
+  @include display-2;
+}
+
+h3 {
+  @include display-3;
+}
+
+h4 {
+  @include display-4;
+}
+
+li,
+p {
+  @include text-1;
+}
+
+article {
+  h1 {
+    margin-top: 8rem;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    margin-top: 1.5rem;
+    margin-bottom: .5rem;
+  }
+
+  li,
+  p {
+    margin-bottom: 3.3rem;
+  }
+
+  video {
+    margin: 3rem 0;
+  }
+
+  @media (max-width: $tablet) {
+    h1 {
+      margin-top: 6rem;
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+  color: $link-color;
+
+  &:hover {
+    text-decoration: underline;
+    color: $link-color-hover;
+  }
+
+  &:visited {
+    color: $link-color-visited;
+  }
+}
+
+.section {
+  @include component-wrap();
+}
+
+.divider {
+  @include component-wrap(920px);
+  height: 1px;
+  background-color: #808080;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+
+@media (max-width: $tablet) {
+  h1 {
+    @include display-2;
+  }
+
+  h2 {
+    @include display-3;
+  }
+
+  h3 {
+    @include display-4;
+  }
+
+
+  li,
+  p {
+    @include text-2;
+  }
+
+  article {
+    li,
+    p {
+      margin-bottom: 2.7rem;
+    }
+  }
+}
