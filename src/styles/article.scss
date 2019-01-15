@@ -30,7 +30,7 @@ article {
 
     > li {
       counter-increment: custom-counter;
-      margin-bottom: 20px;
+      margin-bottom: 28px;
       position: relative;
       padding-left: 36px;
 
@@ -115,6 +115,7 @@ $votes-shadow: 0 9px 14px -9px rgba(0, 0, 0, .5);
 .vote-wrap {
   margin: 100px 0 150px;
   border-radius: 2px;
+  overflow: hidden;
   color: #4A4A4F;
   font-size: 1.8rem;
 
@@ -175,6 +176,8 @@ $votes-shadow: 0 9px 14px -9px rgba(0, 0, 0, .5);
     margin: 80px $gutter * -1px;
 
     .header {
+      font-size: 2.2rem;
+      line-height: 3rem;
       margin-bottom: 30px;
     }
 
@@ -188,7 +191,7 @@ $votes-shadow: 0 9px 14px -9px rgba(0, 0, 0, .5);
 #not-helpful-container {
   display: none;
   background-color: #F7FAFE;
-  padding: 40px;
+  padding: 10px 40px 40px;
 
   &.visible {
     display: block;
@@ -208,14 +211,14 @@ $votes-shadow: 0 9px 14px -9px rgba(0, 0, 0, .5);
   }
 
   textarea {
-    margin-top: 40px;
-    padding: 20px;
+    margin-top: 26px;
+    padding: 10px 16px;
     width: 100%;
     background-color: #FFF;
   }
 
   [type="submit"] {
-    margin-top: 40px;
+    margin-top: 20px;
   }
 
   @media (max-width: $tablet) {
@@ -233,6 +236,7 @@ $votes-shadow: 0 9px 14px -9px rgba(0, 0, 0, .5);
 
     textarea {
       margin-top: 15px;
+      margin-bottom: 0;
     }
 
     input[type="submit"] {
@@ -245,14 +249,16 @@ $votes-shadow: 0 9px 14px -9px rgba(0, 0, 0, .5);
   padding: 40px 40px 10px;
   background-color: #F4FEF3;
   border-radius: 2px;
+  overflow: hidden;
   display: none;
-  margin-top: 30px;
+  margin-top: 14px;
 
   &.visible {
     display: block;
   }
 
   p {
+    font-weight: 600;
     margin-bottom: 30px;
   }
 
@@ -269,12 +275,18 @@ $c-color: #737373;
 
 .contributors {
   margin-bottom: 32px;
+  color: $c-color;
+  font-size: 1.6rem;
+  line-height: 3.3rem;
 
   .user {
-    font-size: 1.6rem;
-    line-height: 3.3rem;
     color: $c-color;
     text-decoration: underline;
+  }
+
+  @media (max-width: $tablet) {
+    font-size: 1.5rem;
+    line-height: 2.7rem;
   }
 }
 

@@ -12,6 +12,8 @@ $bc: #EDEDF0;
   margin: 20px auto;
   max-width: $total-width;
   z-index: 100;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .34);
+
 }
 
 .breadcrumbs,
@@ -27,7 +29,13 @@ $bc: #EDEDF0;
   position: relative;
   flex-wrap: wrap;
 
+  li,
+  p {
+    font-size: 1.6rem;
+  }
+
   .logo {
+    padding-left: 10px;
     max-height: 40px;
     object-fit: contain;
     width: auto;
@@ -111,9 +119,7 @@ $bc: #EDEDF0;
           &:before {
             content: '';
             display: inline-block;
-            //height: 1.4rem;
-            //width: 1.8rem;
-            padding: 1rem;
+            padding: 7px 9px;
             margin: 0;
             background: transparent url($arrow-down) 50% 0 no-repeat;
             background-size: 12px;
@@ -187,6 +193,8 @@ $bc: #EDEDF0;
     }
 
     .drop-menu {
+      padding-top: 55px;
+
       + .step {
         &:after {
           width: 10px;
@@ -196,6 +204,12 @@ $bc: #EDEDF0;
       }
 
       ul {
+        padding-top: 15px;
+
+        a {
+          padding: 1rem 0;
+        }
+
         .active a:before {
           padding: 4px;
           margin-right: 5px;

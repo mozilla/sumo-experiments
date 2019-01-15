@@ -49,7 +49,6 @@ $bc: #D7D7DB;
   position: relative;
   height: 48px;
   width: 48px;
-  padding-right: 10px;
   z-index: 102;
   display: flex;
   flex-direction: column;
@@ -78,11 +77,12 @@ $bc: #D7D7DB;
     display: flex;
     align-items: center;
     margin-right: 20px;
-    font-weight: 600;
 
     > span {
       display: none;
       padding-right: 20px;
+      font-weight: 600;
+      font-size: 1.6rem;
     }
   }
 
@@ -145,7 +145,7 @@ $bc: #D7D7DB;
   .title {
     @include text-2;
     position: relative;
-    padding: 20px;
+    padding: 14px;
     border-top: 1px solid $bc;
     border-bottom: 1px solid transparent;
     cursor: pointer;
@@ -157,7 +157,7 @@ $bc: #D7D7DB;
       position: absolute;
       top: 50%;
       right: 20px;
-      width: 12px;
+      width: 8px;
       height: 2px;
       border-radius: 4px;
       background-color: #000;
@@ -189,6 +189,7 @@ $bc: #D7D7DB;
 
   .articles {
     padding-left: 40px;
+    padding-right: 20px;
     display: none;
   }
 
@@ -214,6 +215,7 @@ $bc: #D7D7DB;
     .title,
     a {
       @include text-1;
+      font-size: 1.6rem;
     }
 
     .title > span {
