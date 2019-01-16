@@ -7,8 +7,8 @@ Node.js ^8.x.x
 
 ```bash
 yarn
-yarn dev // index.html
-yarn dev-b // index-b.html
+yarn dev // enable-and-disable-cookies-website-preferences.html
+yarn dev-b // insecure-password-warning-firefox.html
 ```
 
 ## Production
@@ -22,5 +22,5 @@ yarn prod
 output folder `dist`
 
 ## Pages
-`index.html`
-`index-b.html`
+`enable-and-disable-cookies-website-preferences.html`
+`insecure-password-warning-firefox.html`
