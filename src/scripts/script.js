@@ -42,7 +42,7 @@ function fn() {
                     slidesPerView: 2,
                 },
                 630: {
-                    slidesPerView: 1
+                    slidesPerView: 'auto'
                 }
             }
         })

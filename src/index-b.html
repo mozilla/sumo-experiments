@@ -179,9 +179,11 @@
 
             <section id="doc-content">
                 <div>
-                    <video controls>
-                        <source src="video/insecure-password-spotlight.mp4">
-                    </video>
+                    <div class="video-container">
+                        <video controls>
+                            <source src="video/insecure-password-spotlight.mp4">
+                        </video>
+                    </div>
 
                     <p>Firefox will display a lock icon with red strike-through in the
                         address bar when a login page you’re viewing does not have a
@@ -209,8 +211,8 @@
                             username (or click outside of the password area) to dismiss the warning.</p>
                     </div>
 
-                    <h1 id="w_websites-report-cookie-errors">What can I do
-                        if a <span class="highlighter">login page</span> is insecure?</h1>
+                    <h2 id="w_websites-report-cookie-errors">What can I do
+                        if a <span class="highlighter">login page</span> is insecure?</h2>
 
                     <p>If a login page for your favorite site is insecure, you
                         can try and see if a secure version of the page exists
@@ -226,7 +228,7 @@
                             that you don’t also use for other important sites.</p>
                     </div>
 
-                    <h1>About insecure pages</h1>
+                    <h2>About insecure pages</h2>
                     <p>Pages that need to transmit private information, such as credit
                         cards, personal information and passwords, need to have a secure
                         connection to help prevent attackers from stealing your
@@ -239,7 +241,7 @@
                         information, such as passwords, on a web page that shows HTTP in
                         the address bar. The information you enter can be stolen over this insecure connection.</p>
 
-                    <h1>Note for developers</h1>
+                    <h2>Note for developers</h2>
                     <p>For developers looking to learn more about this warning, please
                         see <a href="#">this page</a>. The page explains when and why
                         Firefox shows this warning, and will also provide some details
@@ -314,7 +316,7 @@
                 </div>
 
                 <section id="doc-contributors">
-                    <h1 class="help-title">These fine people helped write this article:</h1>
+                    <h2 class="help-title">These fine people helped write this article:</h2>
                     <div class="contributors">
                         <a class="user" href="/en-US/user/AliceWyman">AliceWyman</a>, <a
                             class="user" href="/en-US/user/Chris_Ilias">Chris Ilias</a>, <a
@@ -344,7 +346,7 @@
         <div class="divider"></div>
 
         <section id="related-documents" class="wiki-related-documents">
-            <h1 class="section">Related Articles</h1>
+            <h2 class="section">Related Articles</h2>
 
             <div class="slider-wrapper">
                 <div class="swiper-container">
@@ -372,17 +374,28 @@
                                     cookies, temp files, and a history of the pages you visit.</p>
                             </a>
                         </div>
+                        <div class="swiper-slide">
+                            <a href="/en-US/kb/websites-say-cookies-are-blocked-unblock-them">
+                                <h3 class="title">Websites say cookies are blocked - Unblock theme 2</h3>
+                                <p>Firefox Private Browsing is great for viewing websites without saving things like
+                                    cookies, temp files, and a history of the pages you visit.</p>
+                            </a>
+                        </div>
                     </div>
 
                     <div class="prev">
-                        <svg width="12" height="10" viewBox="0 0 12 10" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 5h9.307M7 1l4 4-4 4" fill-rule="nonzero" stroke="#FFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                        <div class="icon">
+                            <svg width="12" height="10" viewBox="0 0 12 10" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 5h9.307M7 1l4 4-4 4" fill-rule="nonzero" stroke="#FFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
                     </div>
                     <div class="next">
-                        <svg width="12" height="10" viewBox="0 0 12 10" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 5h9.307M7 1l4 4-4 4" fill-rule="nonzero" stroke="#FFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                        <div class="icon">
+                            <svg width="12" height="10" viewBox="0 0 12 10" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 5h9.307M7 1l4 4-4 4" fill-rule="nonzero" stroke="#FFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </div>

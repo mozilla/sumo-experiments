@@ -2,6 +2,7 @@
 
 $menu-shadow: 0 5px 50px 0 rgba(23, 49, 83, .42);
 $bc: #D7D7DB;
+$bc2: #CBD7E7;
 
 .js-toggle {
   cursor: pointer;
@@ -54,6 +55,7 @@ $bc: #D7D7DB;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 
   span {
     display: block;
@@ -62,6 +64,7 @@ $bc: #D7D7DB;
     border-radius: 2px;
     background-color: #000;
     transition: all .1s ease-in-out;
+    pointer-events: none;
 
     &:not(:last-child) {
       margin-bottom: 3px;
@@ -114,7 +117,7 @@ $bc: #D7D7DB;
   display: none;
   position: absolute;
   top: 0;
-  left: -5px;
+  left: -14px;
   right: 0;
   padding-top: 86px;
   background-color: #FFF;
@@ -125,11 +128,12 @@ $bc: #D7D7DB;
     display: flex;
     align-items: center;
     text-transform: uppercase;
-    padding: 5px 20px;
+    padding: 5px 30px;
 
     img {
       max-width: 20px;
       margin-right: 12px;
+      margin-bottom: 2px;
       object-fit: contain;
     }
   }
@@ -145,7 +149,7 @@ $bc: #D7D7DB;
   .title {
     @include text-2;
     position: relative;
-    padding: 14px;
+    padding: 14px 30px;
     border-top: 1px solid $bc;
     border-bottom: 1px solid transparent;
     cursor: pointer;
@@ -173,7 +177,8 @@ $bc: #D7D7DB;
     &:checked {
       + .title {
         background-color: #F7FAFE;
-        border-bottom: 1px solid $bc;
+        border-top: 1px solid $bc2;
+        border-bottom: 1px solid $bc2;
         cursor: pointer;
 
         &:before {

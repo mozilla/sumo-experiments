@@ -8,8 +8,8 @@ $bc: #EDEDF0;
   position: sticky;
   top: 0;
   background: #FFF;
-  padding: 0 $gutter*1px;
-  margin: 20px auto;
+  padding: 15px $gutter*1px;
+  margin: 5px auto;
   max-width: $total-width;
   z-index: 100;
   //box-shadow: 0 2px 4px rgba(0, 0, 0, .34);
@@ -34,11 +34,12 @@ $bc: #EDEDF0;
   }
 
   .logo {
-    padding-left: 10px;
+    //padding-left: 10px;
     max-height: 40px;
     object-fit: contain;
     width: auto;
     margin-right: 10px;
+    margin-bottom: 2px;
   }
 
   li {
@@ -49,6 +50,12 @@ $bc: #EDEDF0;
     position: relative;
     display: flex;
     margin: 10px 0;
+
+    &:first-child {
+      .drop-menu {
+        transform: translateX(-20px) !important;
+      }
+    }
 
     &:not(:first-child):before {
       content: '/';
@@ -72,9 +79,9 @@ $bc: #EDEDF0;
   .drop-menu {
     position: absolute;
     display: none;
-    padding-top: 60px;
+    padding-top: 85px;
     box-shadow: $bs;
-    top: calc(50% - 30px);
+    top: calc(50% - 42px);
     left: 0;
     right: auto;
     background: #FFF;
@@ -85,7 +92,7 @@ $bc: #EDEDF0;
         content: '';
         display: inline-block;
         background: transparent url($arrow-down) center no-repeat;
-        background-size: 10px;
+        background-size: 13px;
         width: 18px;
         height: 18px;
         margin-left: 8px;
@@ -171,8 +178,9 @@ $bc: #EDEDF0;
 
   @media (max-width: $tablet) {
     .logo {
-      max-height: 20px;
-      margin-right: 3px;
+      max-height: 12px;
+      margin-right: 8px;
+      margin-bottom: 1px;
     }
 
     li,
@@ -192,7 +200,8 @@ $bc: #EDEDF0;
     }
 
     .drop-menu {
-      padding-top: 55px;
+      top: calc(50% - 20px);
+      padding-top: 40px;
 
       + .step {
         &:after {
