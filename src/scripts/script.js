@@ -1,4 +1,23 @@
 function fn() {
+    // breadcrumbs shadow
+    (function() {
+        var bc = document.getElementById('breadcrumbs')
+
+        if(bc !== null) {
+            function listener() {
+                var h = bc.offsetHeight
+                var shadow = bc.querySelector('.shadow')
+
+                if(shadow !== null) {
+                    shadow.style.top = h + 'px'
+                }
+            }
+
+            window.addEventListener('resize', listener, false)
+            listener()
+        }
+    })();
+
     // categories nav
     (function() {
         var toggle = document.querySelector('.js-toggle');
