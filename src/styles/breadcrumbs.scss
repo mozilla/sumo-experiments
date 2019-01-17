@@ -7,12 +7,29 @@ $bc: #EDEDF0;
 #breadcrumbs {
   position: sticky;
   top: 0;
+  z-index: 100;
+
+  .shadow {
+    position: sticky;
+    width: 100%;
+    height: 0;
+    background: #FFF;
+    top: 86px;
+    box-shadow: 0 2px 4px 1px rgba(0, 0, 0, .34);
+    z-index: -1;
+  }
+}
+
+.breadcrumbs-wrap {
   background: #FFF;
   padding: 15px $gutter*1px;
-  margin: 5px auto;
+  width: 100%;
+}
+
+.breadcrumbs {
   max-width: $total-width;
-  z-index: 100;
-  //box-shadow: 0 2px 4px rgba(0, 0, 0, .34);
+  margin: 0 auto;
+  z-index: 2;
 }
 
 .breadcrumbs,

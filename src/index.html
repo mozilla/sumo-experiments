@@ -96,7 +96,9 @@
                     <div class="list">
                         <div class="acc">
                             <input id="acc-1" type="radio" name="acc-toggle" class="sr-only">
-                            <label for="acc-1" class="title">Basic Browsing</label>
+                            <label for="acc-1" class="title">
+                                <a href="#">Basic Browsing</a>
+                            </label>
 
                             <ul class="articles">
                                 <li><a href="#">Bookmarks and tabs</a></li>
@@ -108,7 +110,9 @@
                         </div>
                         <div class="acc">
                             <input id="acc-2" type="radio" name="acc-toggle" class="sr-only">
-                            <label for="acc-2" class="title">Install and update</label>
+                            <label for="acc-2" class="title">
+                                <a href="#">Install and update</a>
+                            </label>
 
                             <ul class="articles">
                                 <li><a href="#">Update Firefox to the latest version</a></li>
@@ -116,11 +120,24 @@
                             </ul>
                         </div>
                         <div class="acc">
-                            <input id="acc-3" type="radio" name="acc-toggle" class="sr-only">
-                            <label for="acc-3" class="title active">Protect your privacy</label>
+                            <input id="acc-3" type="radio" name="acc-toggle" class="sr-only" checked>
+                            <label for="acc-3" class="title">
+                                <a href="#">Protect your privacy</a>
+                            </label>
 
                             <ul class="articles">
-                                <li class="active"><a href="#">Cookies and Cache</a></li>
+                                <li>
+                                    <input type="radio" id="acc-3-1" name="acc-toggle-1" class="sr-only" checked>
+                                    <label class="title" for="acc-3-1">
+                                        <a href="#">Cookies and Cache</a>
+                                    </label>
+
+                                    <ul class="articles">
+                                        <li class="active"><a href="#">Enable and disable cookies that websites use to track your preference</a></li>
+                                        <li><a href="#">Cookies - Information that websites store on your computer</a></li>
+                                        <li><a href="#">Clear cookies and site data in Firefox</a></li>
+                                    </ul>
+                                </li>
                                 <li><a href="#">Insecure password</a></li>
                                 <li><a href="#">How do I turn on the Do Not Track feature?</a></li>
                                 <li><a href="#">Secure your Firefox Account with two-step authentication</a></li>
@@ -306,20 +323,20 @@
                         <h4 class="title">Sorry to hear that. Tell more to help us improve the article</h4>
 
                         <form>
-                            <label for="nh1">
+                            <label class="radio-btn" for="nh1">
                                 <input type="radio" id="nh1" name="not-helpful-radio">
                                 <span>It’s too difficult</span>
                             </label>
-                            <label for="nh2">
+                            <label class="radio-btn" for="nh2">
                                 <input type="radio" id="nh2" name="not-helpful-radio">
                                 <span>It didn't help</span>
                             </label>
-                            <label for="nh3">
-                                <input type="radio" id="nh3" name="not-helpful-radio">
+                            <label class="radio-btn" for="nh3">
+                                <input type="radio" id="nh3" name="not-helpful-radio" disabled>
                                 <span>It’s not what I’m looking for</span>
                             </label>
-                            <label for="nh4">
-                                <input type="radio" id="nh4" name="not-helpful-radio">
+                            <label class="radio-btn" for="nh4">
+                                <input type="radio" id="nh4" name="not-helpful-radio" checked disabled>
                                 <span>Other</span>
                             </label>
 
