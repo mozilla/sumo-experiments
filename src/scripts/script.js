@@ -143,55 +143,65 @@ function fn() {
 
         var state = {
             columns: 1,
-            direction: false,
+            width: null,
             transformLeft: 0
         };
 
-        function toLeft(data) {
-            return window.innerWidth - data.left < liWidth
+        function isTablet() {
+            return window.innerWidth <= 456
         }
 
+        function toLeft(left, liWidth, windowWidth) {
+            return windowWidth - left < liWidth
+        }
+
+
         function setState(data, target) {
-            var list = target.parentNode.querySelectorAll('.drop-menu ul li').length;
-            var rightColumns = Math.floor((window.innerWidth - (data.left + liWidth))/liWidth) + 1;
-            var leftColumns = Math.floor(data.left/liWidth);
+            var container = document.querySelector('.breadcrumbs-wrap')
+            if(container === null) return
 
-            state.direction = leftColumns > rightColumns || toLeft(data);
+            var innerWidth = container.getBoundingClientRect().width
+            var list = target.parentNode.querySelectorAll('.drop-menu ul li').length
+            var rightColumns = Math.floor((innerWidth - (data.left + liWidth))/liWidth) + 1
+            var maxColumns = Math.floor(list / columnLength)
+            var leftTransform = - (innerWidth - data.right - 10)
+            var tableTransform = - data.left
 
-            state.columns = Math.min(Math.max(leftColumns, rightColumns), Math.floor(list / columnLength));
-
-            if(data.right < liWidth && toLeft(data)) {
-                state.transformLeft = liWidth - data.right + 10
-            } else {
-                state.transformLeft = 0
+            state = {
+                columns: Math.min(rightColumns, maxColumns),
+                width: isTablet() ? innerWidth : null,
+                transformLeft: isTablet() ? tableTransform : toLeft(data.left, liWidth, innerWidth) ? leftTransform : 0
             }
         }
 
         function hoverListener(e) {
             var t = e.target;
             var wrap = t.parentNode;
-            var dropMenu = t.parentNode.querySelector(dropMenuSelector);
 
-            if(t.classList.contains(stepSelector) && dropMenu !== null) {
-                var targetPos = t.getBoundingClientRect();
+            if(wrap !== null) {
+                var dropMenu = wrap.querySelector(dropMenuSelector);
 
-                setState(targetPos, t);
+                if(t.classList.contains(stepSelector) && dropMenu !== null) {
+                    var targetPos = wrap.getBoundingClientRect();
 
-                wrap.setAttribute('data-columns', state.columns);
-                wrap.setAttribute('data-direction', state.direction ? 'left' : 'right');
-                dropMenu.style.transform = 'translateX(' + state.transformLeft + 'px)'
+                    setState(targetPos, wrap);
+
+                    wrap.setAttribute('data-columns', state.columns);
+                    dropMenu.style.transform = 'translateX(' + state.transformLeft + 'px)'
+                    dropMenu.style.width = state.width ? state.width + 'px' : 'auto';
+                }
             }
         }
 
         function init(list) {
             list = Array.prototype.slice.call(list);
 
-            if(!list.length) return;
-
-            list.forEach(function(item) {
-                item.addEventListener('mouseover', hoverListener, false);
-                item.addEventListener('touch', hoverListener, false)
-            })
+            if(list.length) {
+                list.forEach(function(item) {
+                    item.addEventListener('mouseover', hoverListener, false);
+                    item.addEventListener('touch', hoverListener, false)
+                })
+            }
         }
     })();
 }

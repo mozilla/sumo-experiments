@@ -66,7 +66,7 @@ $bc: #EDEDF0;
   > li {
     position: relative;
     display: flex;
-    margin: 10px 0;
+    padding: 10px 0;
 
     &:first-child {
       .drop-menu {
@@ -85,6 +85,7 @@ $bc: #EDEDF0;
   .step {
     position: relative;
     cursor: pointer;
+    transition: color .15s ease-in-out;
     z-index: 0;
 
     &:hover,
@@ -172,13 +173,6 @@ $bc: #EDEDF0;
     }
   }
 
-  [data-direction="left"] {
-    .drop-menu {
-      left: auto;
-      right: -10px;
-    }
-  }
-
   li:hover {
     .step {
       z-index: 100;
@@ -240,6 +234,23 @@ $bc: #EDEDF0;
           margin-right: 5px;
         }
       }
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .breadcrumbs {
+    &:hover > li .step {
+      color: #BFBFBF;
+    }
+
+    > li:hover .step,
+    .drop-menu:hover {
+      color: #000;
+    }
+
+    .drop-menu {
+      background: transparent;
     }
   }
 }
