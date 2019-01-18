@@ -19,7 +19,6 @@ $slidernav-color: #0060DF;
 
 .swiper-container {
   @include component-wrap;
-  //position: relative;
   overflow: visible;
   width: 100%;
   height: 100%;
@@ -35,7 +34,6 @@ $slidernav-color: #0060DF;
     a {
       height: 100%;
       text-decoration: none;
-      border: 1px solid $border-color;
       background-color: #FFF;
       padding: 30px;
       border-radius: 2px;
@@ -56,8 +54,6 @@ $slidernav-color: #0060DF;
 
       .title {
         color: #000;
-        font-size: 2.2rem;
-        line-height: 3.3rem;
         margin: 0 0 30px;
         font-weight: 600;
       }
@@ -98,9 +94,8 @@ $slidernav-color: #0060DF;
     .icon {
       position: absolute;
       top: 50%;
-      left: 0;
+      left: 10px;
       border-radius: 100%;
-      //background: $slidernav-color url('../images/arrow.svg') center no-repeat;
       background: $slidernav-color;
       border: 2px solid $slidernav-color;
       height: 42px;
@@ -139,7 +134,7 @@ $slidernav-color: #0060DF;
   .next {
     .icon {
       left: auto;
-      right: 0;
+      right: 10px;
       transform: rotate(0);
     }
   }
@@ -158,8 +153,24 @@ $slidernav-color: #0060DF;
 
 
   @media (max-width: 630px) {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+
     .swiper-slide {
       max-width: 290px;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    .swiper-slide a {
+      .title {
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: 1.5rem;
+      }
     }
   }
 }

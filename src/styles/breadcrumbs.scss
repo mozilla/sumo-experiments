@@ -22,7 +22,7 @@ $bc: #EDEDF0;
 
 .breadcrumbs-wrap {
   background: #FFF;
-  padding: 15px $gutter*1px;
+  padding: 15px 0;
   width: 100%;
 }
 
@@ -30,6 +30,7 @@ $bc: #EDEDF0;
   max-width: $total-width;
   margin: 0 auto;
   z-index: 2;
+  padding: 0 $gutter*1px;
 }
 
 .breadcrumbs,
@@ -218,7 +219,7 @@ $bc: #EDEDF0;
         &:after {
           width: 10px;
           margin-left: 6px;
-          background-size: 6px;
+          background-size: 10px;
         }
       }
 
@@ -230,7 +231,7 @@ $bc: #EDEDF0;
         }
 
         .active a:before {
-          padding: 4px;
+          padding: 6px;
           margin-right: 5px;
         }
       }

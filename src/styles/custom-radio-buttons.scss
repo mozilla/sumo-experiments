@@ -22,9 +22,8 @@ $col2: #3B88FE;
       width: 15px;
       height: 15px;
       background-color: #FFF;
-      border: 1px solid $col1;
       border-radius: 50%;
-      box-shadow: inset 0 0 0 0 $col2;
+      box-shadow: inset 0 0 0 1px $col1;
       transition: all .15s ease-in-out;
     }
   }
@@ -35,21 +34,11 @@ $col2: #3B88FE;
 
   input[type="radio"] {
     &:checked + span:before {
-      border-color: $col2;
-      box-shadow: inset 0 0 0 4px $col2;
+      box-shadow: inset 0 0 0 5px $col2;
     }
 
     &:disabled + span {
-      color: $col1;
-
-      &:before {
-        border-color: $col1;
-        box-shadow: inset 0 0 0 0 $col1;
-      }
-    }
-
-    &:disabled:checked + span:before {
-      box-shadow: inset 0 0 0 4px $col1;
+      opacity: .4;
     }
   }
 }

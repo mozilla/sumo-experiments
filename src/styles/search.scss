@@ -108,4 +108,11 @@ $border-color-1: #D1D5D7;
     }
   }
 
+  @media (max-width: $mobile) {
+    .title,
+    li {
+      font-size: 1.2rem;
+      line-height: 2rem;
+    }
+  }
 }

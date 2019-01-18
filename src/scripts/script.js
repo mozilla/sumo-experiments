@@ -3,18 +3,20 @@ function fn() {
     (function() {
         var bc = document.getElementById('breadcrumbs')
 
+        function listener(container, shadow) {
+            shadow.style.top = container.offsetHeight + 'px'
+        }
+
         if(bc !== null) {
-            function listener() {
-                var h = bc.offsetHeight
-                var shadow = bc.querySelector('.shadow')
+            var sh = bc.querySelector('.shadow')
 
-                if(shadow !== null) {
-                    shadow.style.top = h + 'px'
-                }
+            if(sh !== null) {
+                window.addEventListener('resize', function() {
+                    listener(bc, sh)
+                }, false)
+
+                listener(bc, sh)
             }
-
-            window.addEventListener('resize', listener, false)
-            listener()
         }
     })();
 
