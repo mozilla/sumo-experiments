@@ -1,8 +1,8 @@
 function fn() {
     // breadcrumbs shadow
     (function() {
-        var bc = document.getElementById('breadcrumbs')
-        var sh = document.querySelector('#breadcrumbs .shadow')
+        var bc = document.getElementById('breadcrumbs');
+        var sh = document.querySelector('#breadcrumbs .shadow');
 
         function listener(container, shadow) {
             shadow.style.top = container.offsetHeight - 2 + 'px'
@@ -11,7 +11,7 @@ function fn() {
         if(bc !== null && sh !== null) {
             window.addEventListener('resize', function() {
                 listener(bc, sh)
-            }, false)
+            }, false);
 
             listener(bc, sh)
         }
@@ -24,7 +24,7 @@ function fn() {
 
         if(toggle !== null) {
             toggle.addEventListener('click', function(e) {
-                var target = e.target
+                var target = e.target;
 
                 target.parentNode.classList.toggle('visible')
             })
@@ -49,13 +49,15 @@ function fn() {
     })();
 
     // Slider: swiperjs https://idangero.us/swiper/
-    (function() {
+    (function(Swiper) {
+        if(typeof Swiper !== 'function') return;
+
         var slider = new Swiper('.swiper-container', {
             slidesPerView: 3,
             spaceBetween: 30,
             navigation: {
-                prevEl: '.swiper-container .prev',
-                nextEl: '.swiper-container .next'
+                prevEl: '.prev .icon',
+                nextEl: '.next .icon'
             },
             breakpoints: {
                 960: {
@@ -66,39 +68,47 @@ function fn() {
                 }
             }
         })
-    })();
+    })(window.Swiper);
 
     // TODO: remove // temp not-helpful
     (function() {
-        var notHelpful = document.querySelector('input[name="not-helpful"]');
-        var helpful = document.querySelector('input[name="helpful"]');
-        var notHelpfulContainer = document.querySelector('#not-helpful-container');
-        var helpfulContainer = document.querySelector('#helpful-container');
+        var containers = document.querySelectorAll('.vote-js');
 
-        function clear() {
-            [notHelpfulContainer, helpfulContainer]
-                .filter(Boolean)
-                .forEach(function(item) {
-                    item.classList.remove('visible');
-                })
+        for(var i = 0; i < containers.length; i++) {
+            init(containers[i])
         }
 
-        function listener(e, container) {
-            e.preventDefault();
-            clear();
-            container.classList.add('visible');
-        }
+        function init(container) {
+            var notHelpful = container.querySelector('input[name="not-helpful"]');
+            var helpful = container.querySelector('input[name="helpful"]');
+            var notHelpfulContainer = container.querySelector('.not-helpful-container');
+            var helpfulContainer = container.querySelector('.helpful-container');
 
-        if(notHelpful !== null && notHelpfulContainer !== null) {
-            notHelpful.addEventListener('click', function(e) {
-                listener(e, notHelpfulContainer)
-            }, false)
-        }
+            function clear(arr) {
+                arr
+                    .filter(Boolean)
+                    .forEach(function(item) {
+                        item.classList.remove('visible');
+                    })
+            }
 
-        if(helpful !== null && helpfulContainer !== null) {
-            helpful.addEventListener('click', function(e) {
-                listener(e, helpfulContainer)
-            }, false)
+            function listener(e, container) {
+                e.preventDefault();
+                clear([notHelpfulContainer, helpfulContainer]);
+                container.classList.add('visible');
+            }
+
+            if(notHelpful !== null && notHelpfulContainer !== null) {
+                notHelpful.addEventListener('click', function(e) {
+                    listener(e, notHelpfulContainer)
+                }, false)
+            }
+
+            if(helpful !== null && helpfulContainer !== null) {
+                helpful.addEventListener('click', function(e) {
+                    listener(e, helpfulContainer)
+                }, false)
+            }
         }
     })();
 
@@ -130,16 +140,16 @@ function fn() {
     })();
 
     // Breadcrumbs dropdown
-    (function() {
-        var liWidth = 250
-        var columnLength = 4
-        var query = 425
-        var queryClass = 'mobile'
+    (function(window) {
+        var liWidth = 250;
+        var columnLength = 4;
+        var query = 425;
+        var queryClass = 'mobile';
 
-        var breadcrumbs = document.querySelector('.breadcrumbs')
-        var containers = document.querySelectorAll('.breadcrumbs > li')
-        var dropMenuClass = '.drop-menu ul'
-        var stepClass = 'step'
+        var breadcrumbs = document.querySelector('.breadcrumbs');
+        var containers = document.querySelectorAll('.breadcrumbs > li');
+        var dropMenuClass = '.drop-menu ul';
+        var stepClass = 'step';
 
         function hideAll(wrappers) {
             for(var i = 0; i < wrappers.length; i++) {
@@ -148,47 +158,47 @@ function fn() {
         }
 
         document.addEventListener('click', function(e) {
-            e.stopPropagation()
+            e.stopPropagation();
 
-            var target = e.target
+            var target = e.target;
 
             if(target.classList.contains(stepClass) && !target.parentNode.classList.contains('visible')) {
-                hideAll(containers)
+                hideAll(containers);
 
                 setTimeout(function() {
-                    breadcrumbs.classList.add('active')
+                    breadcrumbs.classList.add('active');
                     target.parentNode.classList.add('visible')
                 }, 100)
             } else {
-                breadcrumbs.classList.remove('active')
+                breadcrumbs.classList.remove('active');
 
                 hideAll(containers)
             }
-        }, false)
+        }, false);
 
-        initColumns(containers, liWidth, columnLength, dropMenuClass, '.' + stepClass)
+        initColumns(containers, liWidth, columnLength, dropMenuClass, '.' + stepClass);
 
         window.addEventListener('resize', function() {
             initColumns(containers, liWidth, columnLength, dropMenuClass, '.' + stepClass)
-        })
+        });
 
         function initColumns(list, columnWidth, maxColumnItemsCount, dropMenuCls, stepCls) {
             for(var i = 0; i < list.length; i++) {
-                var dropMenu = list[i].querySelector(dropMenuCls)
-                var step = list[i].querySelector(stepCls)
-                var windowWidth = window.innerWidth
+                var dropMenu = list[i].querySelector(dropMenuCls);
+                var step = list[i].querySelector(stepCls);
+                var windowWidth = window.innerWidth;
 
                 if(dropMenu !== null && step !== null) {
                     if(windowWidth <= query) {
                         dropMenu.parentNode.classList.add(queryClass)
                     } else {
-                        dropMenu.parentNode.classList.remove(queryClass)
+                        dropMenu.parentNode.classList.remove(queryClass);
 
-                        var wantedColumns = Math.ceil(dropMenu.childElementCount / maxColumnItemsCount)
-                        var available = Math.floor((windowWidth - step.getBoundingClientRect().left) / columnWidth)
-                        var state = Math.min(wantedColumns, available)
+                        var wantedColumns = Math.ceil(dropMenu.childElementCount / maxColumnItemsCount);
+                        var available = Math.floor((windowWidth - step.getBoundingClientRect().left) / columnWidth);
+                        var state = Math.min(wantedColumns, available);
 
-                        state = state > 2 ? 3 : state
+                        state = state > 2 ? 3 : state;
 
                         dropMenu.setAttribute('data-columns', state.toString())
                     }
@@ -196,7 +206,44 @@ function fn() {
             }
 
         }
-    })()
+    })(window);
+
+    // video slider
+    (function(Swiper) {
+        if(typeof Swiper !== 'function') return;
+
+        var thumbs = document.querySelector('.gallery-thumbs');
+        var galleryTop = document.querySelector('.gallery-top');
+
+        if(thumbs !== null && galleryTop !== null) {
+            var thumbsSlider = new Swiper(thumbs, {
+                spaceBetween: 10,
+                slidesPerView: 'auto',
+                // freeMode: true,
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+                on: {
+                    click: function() {
+                        var videos = galleryTop.querySelectorAll('video');
+
+                        for(var i = 0; i < videos.length; i++) {
+                            videos[i].pause()
+                        }
+                    }
+                }
+            });
+
+            var galleetTopSlider = new Swiper(galleryTop, {
+                spaceBetween: 10,
+                wrapperClass: 'gallery-wrapper',
+                slideClass: 'gallery-slide',
+                slidesPerView: 1,
+                thumbs: {
+                    swiper: thumbsSlider
+                }
+            })
+        }
+    })(window.Swiper);
 }
 
 function ready(fn) {

@@ -229,7 +229,7 @@ $votes-shadow: 0 9px 14px -9px rgba(0, 0, 0, .5);
   }
 }
 
-#not-helpful-container {
+.not-helpful-container {
   display: none;
   background-color: #F7FAFE;
   padding: 10px 40px 40px;
@@ -287,7 +287,7 @@ $votes-shadow: 0 9px 14px -9px rgba(0, 0, 0, .5);
   }
 }
 
-#helpful-container {
+.helpful-container {
   padding: 40px 40px 10px;
   background-color: #F4FEF3;
   border-radius: 2px;
@@ -306,6 +306,18 @@ $votes-shadow: 0 9px 14px -9px rgba(0, 0, 0, .5);
 
   svg {
     margin-right: 10px;
+  }
+}
+
+// video-votes
+.video-votes {
+  display: flex;
+  align-items: center;
+  margin-top: -20px;
+  position: relative;
+
+  .votes {
+    margin: 0 auto;
   }
 }
 
@@ -334,4 +346,50 @@ $c-color: #737373;
 
 .help-link {
   margin: 20px 0 60px;
+}
+
+
+/**
+* Video slider
+ */
+.swiper-slide {
+  background-size: cover;
+  background-position: center;
+}
+
+.gallery-container {
+  max-width: 100%;
+  overflow: hidden;
+
+  &.gallery-top {
+    margin-top: 3rem;
+
+    .gallery-wrapper {
+      display: flex;
+
+      .gallery-slide {
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  &.gallery-thumbs {
+    padding: 0;
+    overflow: hidden;
+
+    .swiper-slide {
+      width: 90px;
+      opacity: .4;
+      display: inline-block;
+
+      img {
+        max-height: 90px;
+        object-fit: contain;
+      }
+    }
+
+    .swiper-slide-thumb-active {
+      opacity: 1;
+    }
+  }
 }
