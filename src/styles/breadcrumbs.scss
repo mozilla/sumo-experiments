@@ -26,13 +26,6 @@ $bc: #EDEDF0;
   width: 100%;
 }
 
-.breadcrumbs {
-  max-width: $total-width;
-  margin: 0 auto;
-  z-index: 2;
-  padding: 0 $gutter*1px;
-}
-
 .breadcrumbs,
 .breadcrumbs .step {
   display: flex;
@@ -45,14 +38,18 @@ $bc: #EDEDF0;
 .breadcrumbs {
   position: relative;
   flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 0 $gutter*1px;
+  max-width: $total-width;
+  z-index: 2;
 
   li,
   p {
     font-size: 1.6rem;
+    margin: 0;
   }
 
   .logo {
-    //padding-left: 10px;
     max-height: 40px;
     object-fit: contain;
     width: auto;
@@ -60,19 +57,13 @@ $bc: #EDEDF0;
     margin-bottom: 2px;
   }
 
-  li {
-    margin: 0;
-  }
-
   > li {
     position: relative;
     display: flex;
     padding: 10px 0;
 
-    &:first-child {
-      .drop-menu {
-        transform: translateX(-20px) !important;
-      }
+    &:first-child .drop-menu {
+      transform: translateX(-20px) !important;
     }
 
     &:not(:first-child):before {
@@ -88,11 +79,6 @@ $bc: #EDEDF0;
     cursor: pointer;
     transition: color .15s ease-in-out;
     z-index: 0;
-
-    &:hover,
-    &:visited {
-      color: #000;
-    }
   }
 
   .drop-menu {
@@ -105,6 +91,8 @@ $bc: #EDEDF0;
     right: auto;
     background: #FFF;
     z-index: 99;
+    max-height: 80vh;
+    overflow-y: scroll;
 
     + .step {
       &:after {
@@ -161,20 +149,15 @@ $bc: #EDEDF0;
       }
     }
 
-  }
-
-  [data-columns="2"] {
-    ul {
+    [data-columns="2"] {
       min-width: 500px;
     }
-  }
-  [data-columns="3"] {
-    ul {
+    [data-columns="3"] {
       min-width: 750px;
     }
   }
 
-  li:hover {
+  .visible {
     .step {
       z-index: 100;
 
@@ -202,6 +185,16 @@ $bc: #EDEDF0;
       line-height: 1.4rem;
     }
 
+    position: relative;
+
+    > li {
+      position: static;
+
+      &:first-child .drop-menu {
+        transform: none !important;
+      }
+    }
+
     li {
       display: flex;
       align-items: center;
@@ -212,8 +205,10 @@ $bc: #EDEDF0;
     }
 
     .drop-menu {
-      top: calc(50% - 20px);
-      padding-top: 40px;
+      left: 0;
+      right: 0;
+      top: 100%;
+      padding-top: 0;
 
       + .step {
         &:after {
@@ -236,22 +231,27 @@ $bc: #EDEDF0;
         }
       }
     }
-  }
-}
 
-@media (max-width: $mobile) {
-  .breadcrumbs {
-    &:hover > li .step {
-      color: #BFBFBF;
-    }
+    &.active {
+      .step,
+      &:before {
+        color: #BFBFBF;
+      }
 
-    > li:hover .step,
-    .drop-menu:hover {
-      color: #000;
-    }
+      .step:after {
+        opacity: .5;
+      }
 
-    .drop-menu {
-      background: transparent;
+      li.visible {
+        .step,
+        &:before {
+          color: #000;
+        }
+
+        .step:after {
+          opacity: 1;
+        }
+      }
     }
   }
 }

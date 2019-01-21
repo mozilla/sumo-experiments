@@ -2,21 +2,18 @@ function fn() {
     // breadcrumbs shadow
     (function() {
         var bc = document.getElementById('breadcrumbs')
+        var sh = document.querySelector('#breadcrumbs .shadow')
 
         function listener(container, shadow) {
-            shadow.style.top = container.offsetHeight + 'px'
+            shadow.style.top = container.offsetHeight - 2 + 'px'
         }
 
-        if(bc !== null) {
-            var sh = bc.querySelector('.shadow')
-
-            if(sh !== null) {
-                window.addEventListener('resize', function() {
-                    listener(bc, sh)
-                }, false)
-
+        if(bc !== null && sh !== null) {
+            window.addEventListener('resize', function() {
                 listener(bc, sh)
-            }
+            }, false)
+
+            listener(bc, sh)
         }
     })();
 
@@ -27,7 +24,9 @@ function fn() {
 
         if(toggle !== null) {
             toggle.addEventListener('click', function(e) {
-                e.target.parentNode.classList.toggle('visible')
+                var target = e.target
+
+                target.parentNode.classList.toggle('visible')
             })
         }
 
@@ -56,11 +55,11 @@ function fn() {
             spaceBetween: 30,
             navigation: {
                 prevEl: '.swiper-container .prev',
-                nextEl: '.swiper-container .next',
+                nextEl: '.swiper-container .next'
             },
             breakpoints: {
                 960: {
-                    slidesPerView: 2,
+                    slidesPerView: 2
                 },
                 630: {
                     slidesPerView: 'auto'
@@ -128,84 +127,76 @@ function fn() {
                 }
             }
         }
-
     })();
 
     // Breadcrumbs dropdown
-    (function(){
-        var el = document.querySelectorAll('.breadcrumbs .step');
-        var liWidth = 250;
-        var columnLength = 4;
-        var dropMenuSelector = '.drop-menu';
-        var stepSelector = 'step';
+    (function() {
+        var liWidth = 250
+        var columnLength = 4
+        var query = 425
+        var queryClass = 'mobile'
 
-        if(el.length) {
-            init(el)
-        }
+        var breadcrumbs = document.querySelector('.breadcrumbs')
+        var containers = document.querySelectorAll('.breadcrumbs > li')
+        var dropMenuClass = '.drop-menu ul'
+        var stepClass = 'step'
 
-        var state = {
-            columns: 1,
-            width: null,
-            transformLeft: 0
-        };
-
-        function isTablet() {
-            return window.innerWidth <= 456
-        }
-
-        function toLeft(left, liWidth, windowWidth) {
-            return windowWidth - left < liWidth
-        }
-
-
-        function setState(data, target) {
-            var container = document.querySelector('.breadcrumbs-wrap')
-            if(container === null) return
-
-            var innerWidth = container.getBoundingClientRect().width
-            var list = target.parentNode.querySelectorAll('.drop-menu ul li').length
-            var rightColumns = Math.floor((innerWidth - (data.left + liWidth))/liWidth) + 1
-            var maxColumns = Math.floor(list / columnLength)
-            var leftTransform = - (innerWidth - data.right - 10)
-            var tableTransform = - data.left
-
-            state = {
-                columns: Math.min(rightColumns, maxColumns),
-                width: isTablet() ? innerWidth : null,
-                transformLeft: isTablet() ? tableTransform : toLeft(data.left, liWidth, innerWidth) ? leftTransform : 0
+        function hideAll(wrappers) {
+            for(var i = 0; i < wrappers.length; i++) {
+                wrappers[i].classList.remove('visible')
             }
         }
 
-        function hoverListener(e) {
-            var t = e.target;
-            var wrap = t.parentNode;
+        document.addEventListener('click', function(e) {
+            e.stopPropagation()
 
-            if(wrap !== null) {
-                var dropMenu = wrap.querySelector(dropMenuSelector);
+            var target = e.target
 
-                if(t.classList.contains(stepSelector) && dropMenu !== null) {
-                    var targetPos = wrap.getBoundingClientRect();
+            if(target.classList.contains(stepClass) && !target.parentNode.classList.contains('visible')) {
+                hideAll(containers)
 
-                    setState(targetPos, wrap);
+                setTimeout(function() {
+                    breadcrumbs.classList.add('active')
+                    target.parentNode.classList.add('visible')
+                }, 100)
+            } else {
+                breadcrumbs.classList.remove('active')
 
-                    wrap.setAttribute('data-columns', state.columns);
-                    dropMenu.style.transform = 'translateX(' + state.transformLeft + 'px)'
-                    dropMenu.style.width = state.width ? state.width + 'px' : 'auto';
+                hideAll(containers)
+            }
+        }, false)
+
+        initColumns(containers, liWidth, columnLength, dropMenuClass, '.' + stepClass)
+
+        window.addEventListener('resize', function() {
+            initColumns(containers, liWidth, columnLength, dropMenuClass, '.' + stepClass)
+        })
+
+        function initColumns(list, columnWidth, maxColumnItemsCount, dropMenuCls, stepCls) {
+            for(var i = 0; i < list.length; i++) {
+                var dropMenu = list[i].querySelector(dropMenuCls)
+                var step = list[i].querySelector(stepCls)
+                var windowWidth = window.innerWidth
+
+                if(dropMenu !== null && step !== null) {
+                    if(windowWidth <= query) {
+                        dropMenu.parentNode.classList.add(queryClass)
+                    } else {
+                        dropMenu.parentNode.classList.remove(queryClass)
+
+                        var wantedColumns = Math.ceil(dropMenu.childElementCount / maxColumnItemsCount)
+                        var available = Math.floor((windowWidth - step.getBoundingClientRect().left) / columnWidth)
+                        var state = Math.min(wantedColumns, available)
+
+                        state = state > 2 ? 3 : state
+
+                        dropMenu.setAttribute('data-columns', state.toString())
+                    }
                 }
             }
-        }
 
-        function init(list) {
-            list = Array.prototype.slice.call(list);
-
-            if(list.length) {
-                list.forEach(function(item) {
-                    item.addEventListener('mouseover', hoverListener, false);
-                    item.addEventListener('touch', hoverListener, false)
-                })
-            }
         }
-    })();
+    })()
 }
 
 function ready(fn) {
