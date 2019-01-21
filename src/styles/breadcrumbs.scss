@@ -46,7 +46,7 @@ $bc: #EDEDF0;
     &:not(:first-child):before {
       content: '/';
       display: inline-block;
-      margin: 0 9px;
+      margin: 0 8px;
       color: $slash-color;
     }
   }
