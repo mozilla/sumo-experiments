@@ -151,6 +151,10 @@ function fn() {
         var dropMenuClass = '.drop-menu ul';
         var stepClass = 'step';
 
+        if(breadcrumbs === null || !containers.length) {
+            return
+        }
+
         function hideAll(wrappers) {
             for(var i = 0; i < wrappers.length; i++) {
                 wrappers[i].classList.remove('visible')
