@@ -109,7 +109,7 @@ $slidernav-color: #0060DF;
 
         svg path {
           fill: $slidernav-color;
-          stroke: $slidernav-color;
+          //stroke: $slidernav-color;
         }
       }
 
@@ -144,7 +144,7 @@ $slidernav-color: #0060DF;
       transform: rotate(180deg);
 
       &:hover {
-        box-shadow: 0 -5px 11px -4px rgba(10, 26, 48, .3);
+        box-shadow: 0 -5px 11px -4px rgba(10, 26, 48, .5);
       }
     }
   }
