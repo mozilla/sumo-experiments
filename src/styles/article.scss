@@ -176,6 +176,7 @@ $votes-shadow: 0 9px 14px -9px rgba(0, 0, 0, .5);
       font-size: 2.2rem;
       line-height: 3rem;
       margin-bottom: 30px;
+      text-align: center;
     }
 
     .helpful {
@@ -232,7 +233,7 @@ $votes-shadow: 0 9px 14px -9px rgba(0, 0, 0, .5);
 .not-helpful-container {
   display: none;
   background-color: #F7FAFE;
-  padding: 10px 40px 40px;
+  padding: 10px 20px 40px;
 
   &.visible {
     display: block;
@@ -313,7 +314,7 @@ $votes-shadow: 0 9px 14px -9px rgba(0, 0, 0, .5);
 .video-votes {
   display: flex;
   align-items: center;
-  margin-top: -20px;
+  margin-top: -10px;
   margin-bottom: 20px;
   position: relative;
 
@@ -345,6 +346,11 @@ $c-color: #737373;
   .user {
     color: $c-color;
     text-decoration: underline;
+    transition: color .15s ease-in-out;
+
+    &:hover {
+      color: #000;
+    }
   }
 
   @media (max-width: $tablet) {
@@ -377,6 +383,8 @@ $c-color: #737373;
       display: flex;
 
       .gallery-slide {
+        border-radius: 2px;
+        overflow: hidden;
         flex-shrink: 0;
       }
     }
@@ -387,6 +395,8 @@ $c-color: #737373;
     overflow: hidden;
 
     .swiper-slide {
+      border-radius: 2px;
+      overflow: hidden;
       width: 90px;
       opacity: .4;
       display: inline-block;

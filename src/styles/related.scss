@@ -70,7 +70,7 @@ $slidernav-color: #0060DF;
   .next,
   .prev {
     position: absolute;
-    top: 0;right: 0;bottom: 0;left: auto;
+    top: -30px;right: 0;bottom: 0;left: auto;
     margin-right: -1px;
     height: 100%;
     background-image: linear-gradient(90deg, rgba(255,255,255,0.00) 0%, #FFFFFF 86%);
@@ -142,6 +142,10 @@ $slidernav-color: #0060DF;
   .prev {
     .icon {
       transform: rotate(180deg);
+
+      &:hover {
+        box-shadow: 0 -5px 11px -4px rgba(10, 26, 48, .3);
+      }
     }
   }
 

@@ -144,7 +144,6 @@ function fn() {
         var liWidth = 250;
         var columnLength = 4;
         var query = 425;
-        var queryClass = 'mobile';
 
         var breadcrumbs = document.querySelector('.breadcrumbs');
         var containers = document.querySelectorAll('.breadcrumbs > li');
@@ -157,6 +156,7 @@ function fn() {
 
         function hideAll(wrappers) {
             for(var i = 0; i < wrappers.length; i++) {
+                document.body.setAttribute('style', '');
                 wrappers[i].classList.remove('visible')
             }
         }
@@ -171,6 +171,7 @@ function fn() {
 
                 setTimeout(function() {
                     breadcrumbs.classList.add('active');
+                    document.body.setAttribute('style', 'overflow: hidden;');
                     target.parentNode.classList.add('visible')
                 }, 100)
             } else {
@@ -193,11 +194,7 @@ function fn() {
                 var windowWidth = window.innerWidth;
 
                 if(dropMenu !== null && step !== null) {
-                    if(windowWidth <= query) {
-                        dropMenu.parentNode.classList.add(queryClass)
-                    } else {
-                        dropMenu.parentNode.classList.remove(queryClass);
-
+                    if(windowWidth > query) {
                         var wantedColumns = Math.ceil(dropMenu.childElementCount / maxColumnItemsCount);
                         var available = Math.floor((windowWidth - step.getBoundingClientRect().left) / columnWidth);
                         var state = Math.min(wantedColumns, available);
@@ -237,13 +234,18 @@ function fn() {
                 }
             });
 
-            var galleetTopSlider = new Swiper(galleryTop, {
+            var galleryTopSlider = new Swiper(galleryTop, {
                 spaceBetween: 10,
                 wrapperClass: 'gallery-wrapper',
                 slideClass: 'gallery-slide',
                 slidesPerView: 1,
                 thumbs: {
                     swiper: thumbsSlider
+                },
+                breakpoints: {
+                    768: {
+                        allowTouchMove : false
+                    }
                 }
             })
         }

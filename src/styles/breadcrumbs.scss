@@ -196,7 +196,7 @@ $bc: #EDEDF0;
     li,
     p,
     a {
-      font-size: 1rem;
+      font-size: 1.5rem;
       line-height: 1.4rem;
     }
 
@@ -210,6 +210,9 @@ $bc: #EDEDF0;
       }
 
       .drop-menu {
+        border-top: 1px solid $bc;
+        margin-top: 15px;
+
         &:before {
           display: none;
         }
@@ -241,7 +244,7 @@ $bc: #EDEDF0;
 
       ul {
         padding-top: 15px;
-        justify-content: left;
+        display: block;
 
         a {
           padding: 1rem 0;
@@ -256,20 +259,14 @@ $bc: #EDEDF0;
 
     &.active {
       .step,
-      &:before {
-        color: #BFBFBF;
-      }
-
+      &:before,
       .step:after {
-        opacity: .5;
+        opacity: .25;
       }
 
       li.visible {
         .step,
-        &:before {
-          color: #000;
-        }
-
+        &:before,
         .step:after {
           opacity: 1;
         }
