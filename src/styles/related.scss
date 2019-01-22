@@ -105,6 +105,7 @@ $slidernav-color: #0060DF;
 
       &:hover {
         background-color: #FFF;
+        box-shadow: 0 5px 11px -4px rgba(10, 26, 48, .3);
 
         svg path {
           fill: $slidernav-color;

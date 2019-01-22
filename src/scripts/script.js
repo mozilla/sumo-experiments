@@ -56,8 +56,8 @@ function fn() {
             slidesPerView: 3,
             spaceBetween: 30,
             navigation: {
-                prevEl: '.prev .icon',
-                nextEl: '.next .icon'
+                prevEl: '.prev',
+                nextEl: '.next'
             },
             breakpoints: {
                 960: {
