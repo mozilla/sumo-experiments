@@ -70,10 +70,8 @@ $slidernav-color: #0060DF;
   .next,
   .prev {
     position: absolute;
-    top: 0;
-    right: 0;
-    left: auto;
-    bottom: 0;
+    top: 0;right: 0;bottom: 0;left: auto;
+    margin-right: -1px;
     height: 100%;
     background-image: linear-gradient(90deg, rgba(255,255,255,0.00) 0%, #FFFFFF 86%);
     z-index: 2;
@@ -84,6 +82,7 @@ $slidernav-color: #0060DF;
     background-image: linear-gradient(-90deg, rgba(255,255,255,0.00) 0%, #FFFFFF 86%);
     right: auto;
     left: 0;
+    margin-left: -1px;
   }
 
 

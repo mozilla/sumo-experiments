@@ -74,7 +74,7 @@ article {
   }
 
   .video-container {
-    margin: 4rem 0;
+    margin: 4rem 0 10rem;
   }
 
   @media (max-width: $tablet) {
@@ -314,10 +314,19 @@ $votes-shadow: 0 9px 14px -9px rgba(0, 0, 0, .5);
   display: flex;
   align-items: center;
   margin-top: -20px;
+  margin-bottom: 20px;
   position: relative;
 
   .votes {
     margin: 0 auto;
+  }
+
+  @media (max-width: $tablet) {
+    ~ .not-helpful-container,
+    ~ .helpful-container {
+      margin-left: -20px;
+      margin-right: -20px;
+    }
   }
 }
 

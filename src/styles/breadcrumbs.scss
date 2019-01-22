@@ -86,9 +86,12 @@ $bc: #EDEDF0;
 
   .step {
     position: relative;
-    cursor: pointer;
     transition: color .15s ease-in-out;
     z-index: 0;
+  }
+
+  li:not(:last-child) .step {
+    cursor: pointer;
   }
 
   .drop-menu {
