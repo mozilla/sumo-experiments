@@ -239,13 +239,9 @@ function fn() {
                 wrapperClass: 'gallery-wrapper',
                 slideClass: 'gallery-slide',
                 slidesPerView: 1,
+                allowTouchMove : false,
                 thumbs: {
                     swiper: thumbsSlider
-                },
-                breakpoints: {
-                    768: {
-                        allowTouchMove : false
-                    }
                 }
             })
         }
