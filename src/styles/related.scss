@@ -24,7 +24,7 @@ $slidernav-color: #0060DF;
   height: 100%;
   position: initial;
   padding-top: 20px;
-  margin-bottom: 50px;
+  padding-bottom: 20px;
 
   .swiper-slide {
     display: flex;
@@ -70,7 +70,7 @@ $slidernav-color: #0060DF;
   .next,
   .prev {
     position: absolute;
-    top: -30px;right: 0;bottom: 0;left: auto;
+    top: 0;right: 0;bottom: 0;left: auto;
     margin-right: -1px;
     height: 100%;
     background-image: linear-gradient(90deg, rgba(255,255,255,0.00) 0%, #FFFFFF 86%);
@@ -92,7 +92,7 @@ $slidernav-color: #0060DF;
 
     .icon {
       position: absolute;
-      top: 50%;
+      top: calc(50% - 21px);
       left: 10px;
       border-radius: 100%;
       background: $slidernav-color;

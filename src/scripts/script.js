@@ -83,6 +83,10 @@ function fn() {
             var helpful = container.querySelector('input[name="helpful"]');
             var notHelpfulContainer = container.querySelector('.not-helpful-container');
             var helpfulContainer = container.querySelector('.helpful-container');
+            var submit = null;
+
+            console.log(submit);
+
 
             function clear(arr) {
                 arr
@@ -98,6 +102,16 @@ function fn() {
                 container.classList.add('visible');
             }
 
+            if(helpfulContainer !== null && helpfulContainer !== null) {
+                submit = notHelpfulContainer.querySelector('input[type="submit"]');
+
+                if(submit !== null) {
+                    submit.addEventListener('click', function(e) {
+                        listener(e, helpfulContainer)
+                    })
+                }
+            }
+
             if(notHelpful !== null && notHelpfulContainer !== null) {
                 notHelpful.addEventListener('click', function(e) {
                     listener(e, notHelpfulContainer)
@@ -111,6 +125,17 @@ function fn() {
             }
         }
     })();
+
+    // TODO: remove // temp submit non-helpful
+    // (function() {
+    //     var submit = document.querySelectorAll('.non-helpful-container input[type="submit"]');
+    //
+    //     for(var i = 0; i < submit.length; i++) {
+    //         submit[i].addEventListener('submit', function() {
+    //             console.log('submit')
+    //         })
+    //     }
+    // })();
 
     // TODO: remove // temp search related articles
     (function() {
