@@ -85,9 +85,6 @@ function fn() {
             var helpfulContainer = container.querySelector('.helpful-container');
             var submit = null;
 
-            console.log(submit);
-
-
             function clear(arr) {
                 arr
                     .filter(Boolean)
@@ -125,17 +122,6 @@ function fn() {
             }
         }
     })();
-
-    // TODO: remove // temp submit non-helpful
-    // (function() {
-    //     var submit = document.querySelectorAll('.non-helpful-container input[type="submit"]');
-    //
-    //     for(var i = 0; i < submit.length; i++) {
-    //         submit[i].addEventListener('submit', function() {
-    //             console.log('submit')
-    //         })
-    //     }
-    // })();
 
     // TODO: remove // temp search related articles
     (function() {
