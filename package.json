@@ -1,5 +1,5 @@
 {
-  "name": "test",
+  "name": "sumo-mozilla",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
@@ -9,10 +9,12 @@
     "dev-b": "node node_modules/parcel-bundler/lib/cli.js ./src/insecure-password-warning-firefox.html",
     "prod1": "node node_modules/parcel-bundler/lib/cli.js build ./src/enable-and-disable-cookies-website-preferences.html --public-url='./static/sumo/kb-ux-experiment' --no-source-maps --no-minify --no-cache",
     "prod2": "node node_modules/parcel-bundler/lib/cli.js build ./src/insecure-password-warning-firefox.html --public-url='./static/sumo/kb-ux-experiment' --no-source-maps --no-minify --no-cache",
-    "prod": "npm run prod1 && npm run prod2"
+    "prod": "npm run prod1 && npm run prod2",
+    "prod-ghp-1": "node node_modules/parcel-bundler/lib/cli.js build ./src/enable-and-disable-cookies-website-preferences.html --public-url='./' --no-source-maps --no-minify --no-cache",
+    "prod2-ghp-2": "node node_modules/parcel-bundler/lib/cli.js build ./src/insecure-password-warning-firefox.html --public-url='./' --no-source-maps --no-minify --no-cache",
+    "prod-ghp": "npm run prod-ghp-1 && npm run prod-ghp-2"
   },
   "author": "",
-  "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^9.4.3",
     "node-sass": "^4.11.0",
