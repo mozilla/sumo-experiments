@@ -11,7 +11,7 @@
     "prod2": "node node_modules/parcel-bundler/lib/cli.js build ./src/insecure-password-warning-firefox.html --public-url='./static/sumo/kb-ux-experiment' --no-source-maps --no-minify --no-cache",
     "prod": "npm run prod1 && npm run prod2",
     "prod-ghp-1": "node node_modules/parcel-bundler/lib/cli.js build ./src/enable-and-disable-cookies-website-preferences.html --public-url='./' --no-source-maps --no-minify --no-cache",
-    "prod2-ghp-2": "node node_modules/parcel-bundler/lib/cli.js build ./src/insecure-password-warning-firefox.html --public-url='./' --no-source-maps --no-minify --no-cache",
+    "prod-ghp-2": "node node_modules/parcel-bundler/lib/cli.js build ./src/insecure-password-warning-firefox.html --public-url='./' --no-source-maps --no-minify --no-cache",
     "prod-ghp": "npm run prod-ghp-1 && npm run prod-ghp-2"
   },
   "author": "",
