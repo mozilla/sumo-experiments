@@ -7,11 +7,23 @@ $bc: #EDEDF0;
 #breadcrumbs {
   position: sticky;
   top: 0;
-  background: #FFF;
-  padding: 0 $gutter*1px;
-  margin: 20px auto;
-  max-width: $total-width;
   z-index: 100;
+
+  .shadow {
+    position: sticky;
+    width: 100%;
+    height: 0;
+    background: #FFF;
+    top: 86px;
+    box-shadow: 0 2px 4px 1px rgba(0, 0, 0, .34);
+    z-index: -1;
+  }
+}
+
+.breadcrumbs-wrap {
+  background: #FFF;
+  padding: 15px 0;
+  width: 100%;
 }
 
 .breadcrumbs,
@@ -26,22 +38,33 @@ $bc: #EDEDF0;
 .breadcrumbs {
   position: relative;
   flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 0 $gutter*1px;
+  max-width: $total-width;
+  z-index: 2;
+
+  li,
+  p {
+    font-size: 1.6rem;
+    margin: 0;
+  }
 
   .logo {
     max-height: 40px;
     object-fit: contain;
     width: auto;
     margin-right: 10px;
-  }
-
-  li {
-    margin: 0;
+    margin-bottom: 2px;
   }
 
   > li {
     position: relative;
     display: flex;
-    margin: 10px 0;
+    padding: 10px 0;
+
+    &:first-child .drop-menu {
+      transform: translateX(-20px) !important;
+    }
 
     &:not(:first-child):before {
       content: '/';
@@ -49,36 +72,46 @@ $bc: #EDEDF0;
       margin: 0 8px;
       color: $slash-color;
     }
+
+    .drop-menu:before {
+      content: '';
+      position: sticky;
+      top: 0;
+      height: 85px;
+      width: 100%;
+      display: block;
+      border-bottom: 1px solid $bc;
+    }
   }
 
   .step {
     position: relative;
-    cursor: pointer;
+    transition: color .15s ease-in-out;
     z-index: 0;
+  }
 
-    &:hover,
-    &:visited {
-      color: #000;
-    }
+  li:not(:last-child) .step {
+    cursor: pointer;
   }
 
   .drop-menu {
     position: absolute;
     display: none;
-    padding-top: 60px;
     box-shadow: $bs;
-    top: calc(50% - 30px);
+    top: calc(50% - 42px);
     left: 0;
     right: auto;
     background: #FFF;
     z-index: 99;
+    max-height: 80vh;
+    overflow-y: scroll;
 
     + .step {
       &:after {
         content: '';
         display: inline-block;
         background: transparent url($arrow-down) center no-repeat;
-        background-size: 10px;
+        background-size: 13px;
         width: 18px;
         height: 18px;
         margin-left: 8px;
@@ -87,7 +120,6 @@ $bc: #EDEDF0;
     }
 
     ul {
-      border-top: 1px solid $bc;
       background-color: #FFF;
       padding: 20px;
       min-width: 220px;
@@ -111,9 +143,7 @@ $bc: #EDEDF0;
           &:before {
             content: '';
             display: inline-block;
-            //height: 1.4rem;
-            //width: 1.8rem;
-            padding: 1rem;
+            padding: 7px 9px;
             margin: 0;
             background: transparent url($arrow-down) 50% 0 no-repeat;
             background-size: 12px;
@@ -130,27 +160,15 @@ $bc: #EDEDF0;
       }
     }
 
-  }
-
-  [data-columns="2"] {
-    ul {
+    [data-columns="2"] {
       min-width: 500px;
     }
-  }
-  [data-columns="3"] {
-    ul {
+    [data-columns="3"] {
       min-width: 750px;
     }
   }
 
-  [data-direction="left"] {
-    .drop-menu {
-      left: auto;
-      right: -10px;
-    }
-  }
-
-  li:hover {
+  .visible {
     .step {
       z-index: 100;
 
@@ -161,20 +179,44 @@ $bc: #EDEDF0;
 
     .drop-menu {
       display: block;
+
+      &:before {
+        background-color: #FFF;
+      }
     }
   }
 
   @media (max-width: $tablet) {
     .logo {
-      max-height: 20px;
-      margin-right: 3px;
+      max-height: 12px;
+      margin-right: 8px;
+      margin-bottom: 1px;
     }
 
     li,
     p,
     a {
-      font-size: 1rem;
+      font-size: 1.5rem;
       line-height: 1.4rem;
+    }
+
+    position: relative;
+
+    > li {
+      position: static;
+
+      &:first-child .drop-menu {
+        transform: none !important;
+      }
+
+      .drop-menu {
+        border-top: 1px solid $bc;
+        margin-top: 15px;
+
+        &:before {
+          display: none;
+        }
+      }
     }
 
     li {
@@ -187,18 +229,46 @@ $bc: #EDEDF0;
     }
 
     .drop-menu {
+      left: 0;
+      right: 0;
+      top: 100%;
+      padding-top: 0;
+
       + .step {
         &:after {
           width: 10px;
           margin-left: 6px;
-          background-size: 6px;
+          background-size: 10px;
         }
       }
 
       ul {
+        padding-top: 15px;
+        display: block;
+
+        a {
+          padding: 1rem 0;
+        }
+
         .active a:before {
-          padding: 4px;
+          padding: 6px;
           margin-right: 5px;
+        }
+      }
+    }
+
+    &.active {
+      .step,
+      &:before,
+      .step:after {
+        opacity: .25;
+      }
+
+      li.visible {
+        .step,
+        &:before,
+        .step:after {
+          opacity: 1;
         }
       }
     }

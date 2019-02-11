@@ -23,7 +23,7 @@ h1 {
 }
 
 h2 {
-  @include display-2;
+  @include display-1;
 }
 
 h3 {
@@ -40,14 +40,24 @@ p {
 }
 
 article {
+  color: #4A4A4F;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    color: #000;
+  }
+
   h1 {
     margin-top: 8rem;
     margin-bottom: 2rem;
   }
 
   h2 {
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
+    margin-top: 10rem;
+    margin-bottom: 4rem;
   }
 
   h3 {
@@ -65,13 +75,18 @@ article {
     margin-bottom: 3.3rem;
   }
 
-  video {
-    margin: 3rem 0;
+  a {
+    font-weight: 600;
   }
 
   @media (max-width: $tablet) {
     h1 {
-      margin-top: 6rem;
+      margin-top: 4rem;
+    }
+
+    h2 {
+      margin-top: 8rem;
+      margin-bottom: 2rem;
     }
   }
 }
@@ -109,7 +124,7 @@ a {
   }
 
   h2 {
-    @include display-3;
+    @include display-2;
   }
 
   h3 {

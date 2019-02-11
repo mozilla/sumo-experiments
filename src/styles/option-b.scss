@@ -2,6 +2,7 @@
 
 $menu-shadow: 0 5px 50px 0 rgba(23, 49, 83, .42);
 $bc: #D7D7DB;
+$bc2: #CBD7E7;
 
 .js-toggle {
   cursor: pointer;
@@ -49,12 +50,12 @@ $bc: #D7D7DB;
   position: relative;
   height: 48px;
   width: 48px;
-  padding-right: 10px;
   z-index: 102;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 
   span {
     display: block;
@@ -63,6 +64,7 @@ $bc: #D7D7DB;
     border-radius: 2px;
     background-color: #000;
     transition: all .1s ease-in-out;
+    pointer-events: none;
 
     &:not(:last-child) {
       margin-bottom: 3px;
@@ -78,11 +80,12 @@ $bc: #D7D7DB;
     display: flex;
     align-items: center;
     margin-right: 20px;
-    font-weight: 600;
 
     > span {
       display: none;
       padding-right: 20px;
+      font-weight: 600;
+      font-size: 1.6rem;
     }
   }
 
@@ -114,7 +117,7 @@ $bc: #D7D7DB;
   display: none;
   position: absolute;
   top: 0;
-  left: -5px;
+  left: -14px;
   right: 0;
   padding-top: 86px;
   background-color: #FFF;
@@ -125,11 +128,12 @@ $bc: #D7D7DB;
     display: flex;
     align-items: center;
     text-transform: uppercase;
-    padding: 5px 20px;
+    padding: 14px 30px;
 
     img {
       max-width: 20px;
       margin-right: 12px;
+      margin-bottom: 2px;
       object-fit: contain;
     }
   }
@@ -142,22 +146,29 @@ $bc: #D7D7DB;
     }
   }
 
+  > .title {
+    padding: 14px 30px;
+    border-top: 1px solid $bc;
+    border-bottom: 1px solid transparent;
+  }
+
   .title {
     @include text-2;
     position: relative;
-    padding: 20px;
-    border-top: 1px solid $bc;
-    border-bottom: 1px solid transparent;
     cursor: pointer;
     width: 100%;
+
+    a {
+      color: #4A4A4F;
+    }
 
     &:after,
     &:before {
       content: '';
       position: absolute;
       top: 50%;
-      right: 20px;
-      width: 12px;
+      right: 28px;
+      width: 8px;
       height: 2px;
       border-radius: 4px;
       background-color: #000;
@@ -169,16 +180,17 @@ $bc: #D7D7DB;
     }
   }
 
+  > input[type="radio"]:checked + .title {
+    background-color: #F7FAFE;
+    border-top: 1px solid $bc2;
+    border-bottom: 1px solid $bc2;
+    cursor: pointer;
+  }
+
   input[type="radio"] {
     &:checked {
-      + .title {
-        background-color: #F7FAFE;
-        border-bottom: 1px solid $bc;
-        cursor: pointer;
-
-        &:before {
-          transform:rotate(0deg);
-        }
+      + .title:before {
+          transform: rotate(0deg);
       }
 
       ~ .articles {
@@ -187,21 +199,26 @@ $bc: #D7D7DB;
     }
   }
 
+  > .articles {
+    padding-left: 20px;
+  }
+
   .articles {
-    padding-left: 40px;
     display: none;
+
+    > li {
+      padding-left: 20px;
+    }
   }
 
   ul {
-    padding: 15px 0 15px 20px;
+    padding: 15px 0;
 
-    li {
-      a {
-        @include text-2;
-        display: block;
-        color: #4A4A4F;
-        padding: 10px 0;
-      }
+    li a {
+      @include text-2;
+      display: block;
+      color: #4A4A4F;
+      padding: 10px 60px 10px 0;
     }
   }
 }
@@ -214,6 +231,7 @@ $bc: #D7D7DB;
     .title,
     a {
       @include text-1;
+      font-size: 1.6rem;
     }
 
     .title > span {
