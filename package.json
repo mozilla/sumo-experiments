@@ -1,18 +1,24 @@
 {
-  "name": "test",
+  "name": "sumo-mozilla",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "clean": "rm -rf .cache/ && rm -rf dist/",
+    "dev0": "node node_modules/parcel-bundler/lib/cli.js ./src/index.html",
+    "dev-b0": "node node_modules/parcel-bundler/lib/cli.js ./src/index-b.html",
     "dev": "node node_modules/parcel-bundler/lib/cli.js ./src/enable-and-disable-cookies-website-preferences.html",
     "dev-b": "node node_modules/parcel-bundler/lib/cli.js ./src/insecure-password-warning-firefox.html",
     "prod1": "node node_modules/parcel-bundler/lib/cli.js build ./src/enable-and-disable-cookies-website-preferences.html --public-url='./static/sumo/kb-ux-experiment' --no-source-maps --no-minify --no-cache",
     "prod2": "node node_modules/parcel-bundler/lib/cli.js build ./src/insecure-password-warning-firefox.html --public-url='./static/sumo/kb-ux-experiment' --no-source-maps --no-minify --no-cache",
-    "prod": "npm run prod1 && npm run prod2"
+    "prod": "npm run prod1 && npm run prod2",
+    "prod-ghp-1": "node node_modules/parcel-bundler/lib/cli.js build ./src/enable-and-disable-cookies-website-preferences.html --public-url='./' --no-source-maps --no-minify --no-cache",
+    "prod-ghp-2": "node node_modules/parcel-bundler/lib/cli.js build ./src/insecure-password-warning-firefox.html --public-url='./' --no-source-maps --no-minify --no-cache",
+    "prod-ghp-1-0": "node node_modules/parcel-bundler/lib/cli.js build ./src/index.html --public-url='./' --no-source-maps --no-minify --no-cache",
+    "prod-ghp-2-0": "node node_modules/parcel-bundler/lib/cli.js build ./src/index-b.html --public-url='./' --no-source-maps --no-minify --no-cache",
+    "prod-ghp": "npm run prod-ghp-1 && npm run prod-ghp-2 && npm run prod-ghp-1-0 && npm run prod-ghp-2-0"
   },
   "author": "",
-  "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^9.4.3",
     "node-sass": "^4.11.0",

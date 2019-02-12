@@ -1,4 +1,22 @@
 function fn() {
+    // breadcrumbs shadow
+    (function() {
+        var bc = document.getElementById('breadcrumbs');
+        var sh = document.querySelector('#breadcrumbs .shadow');
+
+        function listener(container, shadow) {
+            shadow.style.top = container.offsetHeight - 2 + 'px'
+        }
+
+        if(bc !== null && sh !== null) {
+            window.addEventListener('resize', function() {
+                listener(bc, sh)
+            }, false);
+
+            listener(bc, sh)
+        }
+    })();
+
     // categories nav
     (function() {
         var toggle = document.querySelector('.js-toggle');
@@ -6,7 +24,9 @@ function fn() {
 
         if(toggle !== null) {
             toggle.addEventListener('click', function(e) {
-                e.target.parentNode.classList.toggle('visible')
+                var target = e.target;
+
+                target.parentNode.classList.toggle('visible')
             })
         }
 
@@ -29,56 +49,77 @@ function fn() {
     })();
 
     // Slider: swiperjs https://idangero.us/swiper/
-    (function() {
+    (function(Swiper) {
+        if(typeof Swiper !== 'function') return;
+
         var slider = new Swiper('.swiper-container', {
             slidesPerView: 3,
             spaceBetween: 30,
             navigation: {
-                prevEl: '.swiper-container .prev',
-                nextEl: '.swiper-container .next',
+                prevEl: '.prev',
+                nextEl: '.next'
             },
             breakpoints: {
                 960: {
-                    slidesPerView: 2,
+                    slidesPerView: 2
                 },
                 630: {
-                    slidesPerView: 1
+                    slidesPerView: 'auto'
                 }
             }
         })
-    })();
+    })(window.Swiper);
 
     // TODO: remove // temp not-helpful
     (function() {
-        var notHelpful = document.querySelector('input[name="not-helpful"]');
-        var helpful = document.querySelector('input[name="helpful"]');
-        var notHelpfulContainer = document.querySelector('#not-helpful-container');
-        var helpfulContainer = document.querySelector('#helpful-container');
+        var containers = document.querySelectorAll('.vote-js');
 
-        function clear() {
-            [notHelpfulContainer, helpfulContainer]
-                .filter(Boolean)
-                .forEach(function(item) {
-                    item.classList.remove('visible');
-                })
+        for(var i = 0; i < containers.length; i++) {
+            init(containers[i])
         }
 
-        function listener(e, container) {
-            e.preventDefault();
-            clear();
-            container.classList.add('visible');
-        }
+        function init(container) {
+            var notHelpful = container.querySelector('input[name="not-helpful"]');
+            var helpful = container.querySelector('input[name="helpful"]');
+            var notHelpfulContainer = container.querySelector('.not-helpful-container');
+            var helpfulContainer = container.querySelector('.helpful-container');
+            var submit = null;
 
-        if(notHelpful !== null && notHelpfulContainer !== null) {
-            notHelpful.addEventListener('click', function(e) {
-                listener(e, notHelpfulContainer)
-            }, false)
-        }
+            function clear(arr) {
+                arr
+                    .filter(Boolean)
+                    .forEach(function(item) {
+                        item.classList.remove('visible');
+                    })
+            }
 
-        if(helpful !== null && helpfulContainer !== null) {
-            helpful.addEventListener('click', function(e) {
-                listener(e, helpfulContainer)
-            }, false)
+            function listener(e, container) {
+                e.preventDefault();
+                clear([notHelpfulContainer, helpfulContainer]);
+                container.classList.add('visible');
+            }
+
+            if(helpfulContainer !== null && helpfulContainer !== null) {
+                submit = notHelpfulContainer.querySelector('input[type="submit"]');
+
+                if(submit !== null) {
+                    submit.addEventListener('click', function(e) {
+                        listener(e, helpfulContainer)
+                    })
+                }
+            }
+
+            if(notHelpful !== null && notHelpfulContainer !== null) {
+                notHelpful.addEventListener('click', function(e) {
+                    listener(e, notHelpfulContainer)
+                }, false)
+            }
+
+            if(helpful !== null && helpfulContainer !== null) {
+                helpful.addEventListener('click', function(e) {
+                    listener(e, helpfulContainer)
+                }, false)
+            }
         }
     })();
 
@@ -107,74 +148,115 @@ function fn() {
                 }
             }
         }
-
     })();
 
     // Breadcrumbs dropdown
-    (function(){
-        var el = document.querySelectorAll('.breadcrumbs .step');
+    (function(window) {
         var liWidth = 250;
         var columnLength = 4;
-        var dropMenuSelector = '.drop-menu';
-        var stepSelector = 'step';
+        var query = 425;
 
-        if(el.length) {
-            init(el)
+        var breadcrumbs = document.querySelector('.breadcrumbs');
+        var containers = document.querySelectorAll('.breadcrumbs > li');
+        var dropMenuClass = '.drop-menu ul';
+        var stepClass = 'step';
+
+        if(breadcrumbs === null || !containers.length) {
+            return
         }
 
-        var state = {
-            columns: 1,
-            direction: false,
-            transformLeft: 0
-        };
-
-        function toLeft(data) {
-            return window.innerWidth - data.left < liWidth
+        function hideAll(wrappers) {
+            for(var i = 0; i < wrappers.length; i++) {
+                document.body.setAttribute('style', '');
+                wrappers[i].classList.remove('visible')
+            }
         }
 
-        function setState(data, target) {
-            var list = target.parentNode.querySelectorAll('.drop-menu ul li').length;
-            var rightColumns = Math.floor((window.innerWidth - (data.left + liWidth))/liWidth) + 1;
-            var leftColumns = Math.floor(data.left/liWidth);
+        document.addEventListener('click', function(e) {
+            e.stopPropagation();
 
-            state.direction = leftColumns > rightColumns || toLeft(data);
+            var target = e.target;
 
-            state.columns = Math.min(Math.max(leftColumns, rightColumns), Math.floor(list / columnLength));
+            if(target.classList.contains(stepClass) && !target.parentNode.classList.contains('visible')) {
+                hideAll(containers);
 
-            if(data.right < liWidth && toLeft(data)) {
-                state.transformLeft = liWidth - data.right + 10
+                setTimeout(function() {
+                    breadcrumbs.classList.add('active');
+                    document.body.setAttribute('style', 'overflow: hidden;');
+                    target.parentNode.classList.add('visible')
+                }, 100)
             } else {
-                state.transformLeft = 0
+                breadcrumbs.classList.remove('active');
+
+                hideAll(containers)
             }
-        }
+        }, false);
 
-        function hoverListener(e) {
-            var t = e.target;
-            var wrap = t.parentNode;
-            var dropMenu = t.parentNode.querySelector(dropMenuSelector);
+        initColumns(containers, liWidth, columnLength, dropMenuClass, '.' + stepClass);
 
-            if(t.classList.contains(stepSelector) && dropMenu !== null) {
-                var targetPos = t.getBoundingClientRect();
+        window.addEventListener('resize', function() {
+            initColumns(containers, liWidth, columnLength, dropMenuClass, '.' + stepClass)
+        });
 
-                setState(targetPos, t);
+        function initColumns(list, columnWidth, maxColumnItemsCount, dropMenuCls, stepCls) {
+            for(var i = 0; i < list.length; i++) {
+                var dropMenu = list[i].querySelector(dropMenuCls);
+                var step = list[i].querySelector(stepCls);
+                var windowWidth = window.innerWidth;
 
-                wrap.setAttribute('data-columns', state.columns);
-                wrap.setAttribute('data-direction', state.direction ? 'left' : 'right');
-                dropMenu.style.transform = 'translateX(' + state.transformLeft + 'px)'
+                if(dropMenu !== null && step !== null) {
+                    if(windowWidth > query) {
+                        var wantedColumns = Math.ceil(dropMenu.childElementCount / maxColumnItemsCount);
+                        var available = Math.floor((windowWidth - step.getBoundingClientRect().left) / columnWidth);
+                        var state = Math.min(wantedColumns, available);
+
+                        state = state > 2 ? 3 : state;
+
+                        dropMenu.setAttribute('data-columns', state.toString())
+                    }
+                }
             }
+
         }
+    })(window);
 
-        function init(list) {
-            list = Array.prototype.slice.call(list);
+    // video slider
+    (function(Swiper) {
+        if(typeof Swiper !== 'function') return;
 
-            if(!list.length) return;
+        var thumbs = document.querySelector('.gallery-thumbs');
+        var galleryTop = document.querySelector('.gallery-top');
 
-            list.forEach(function(item) {
-                item.addEventListener('mouseover', hoverListener, false);
-                item.addEventListener('touch', hoverListener, false)
+        if(thumbs !== null && galleryTop !== null) {
+            var thumbsSlider = new Swiper(thumbs, {
+                spaceBetween: 10,
+                slidesPerView: 'auto',
+                // freeMode: true,
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+                on: {
+                    click: function() {
+                        var videos = galleryTop.querySelectorAll('video');
+
+                        for(var i = 0; i < videos.length; i++) {
+                            videos[i].pause()
+                        }
+                    }
+                }
+            });
+
+            var galleryTopSlider = new Swiper(galleryTop, {
+                spaceBetween: 10,
+                wrapperClass: 'gallery-wrapper',
+                slideClass: 'gallery-slide',
+                slidesPerView: 1,
+                allowTouchMove : false,
+                thumbs: {
+                    swiper: thumbsSlider
+                }
             })
         }
-    })();
+    })(window.Swiper);
 }
 
 function ready(fn) {

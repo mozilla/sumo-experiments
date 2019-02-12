@@ -24,3 +24,5 @@ output folder `dist`
 ## Pages
 `enable-and-disable-cookies-website-preferences.html`
 `insecure-password-warning-firefox.html`
+`index.html`
+`index-b.html`

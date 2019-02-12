@@ -1,5 +1,6 @@
 @import 'variables.scss';
 
+
 button,
 textarea {
   border: none;
@@ -11,7 +12,7 @@ textarea {
 
 textarea {
   border-radius: 2px;
-  border: 1px solid rgba(0, 0, 0, .1);
+  border: 1px solid #E5E7E8;
   resize: vertical;
 
   &:focus {
@@ -26,8 +27,9 @@ textarea {
   background-color: #000;
   min-width: 180px;
   font-size: 1.6rem;
-  font-weight: bold;
-  line-height: 5rem;
+  font-weight: 600;
+  line-height: 4.7rem;
+  padding: 1px 32px;
   border-radius: 2px;
   text-decoration: none;
   border: 2px solid #000;
