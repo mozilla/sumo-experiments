@@ -3,7 +3,7 @@ node_modules/
 
 # Compiled output
 build
-# dist
+dist
 .cache
 
 # Test coverage
