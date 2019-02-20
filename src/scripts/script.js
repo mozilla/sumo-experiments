@@ -107,7 +107,9 @@ function fn() {
 
             function validate(ta, r) {
                 var validTextarea = ta.length && ta[0].value.length;
-                var radioChecked = Array.prototype.slice.call(r).filter(item => item.checked).length;
+                var radioChecked = Array.prototype.slice.call(r).filter(function (item) {
+                    return item.checked;
+                }).length;
 
                 return validTextarea && radioChecked
             }
