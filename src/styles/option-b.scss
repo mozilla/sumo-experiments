@@ -16,6 +16,7 @@ $bc2: #CBD7E7;
   .search-inner {
     @include component-wrap;
   }
+  z-index: 100;
 }
 
 .option-b {
