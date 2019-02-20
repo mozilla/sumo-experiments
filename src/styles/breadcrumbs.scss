@@ -103,8 +103,8 @@ $bc: #EDEDF0;
     right: auto;
     background: #FFF;
     z-index: 99;
-    max-height: 80vh;
-    overflow-y: scroll;
+    max-height: calc(80vh - 260px);
+    overflow-y: auto;
 
     + .step {
       &:after {
