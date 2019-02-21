@@ -79,7 +79,7 @@ article {
 
   @media (max-width: $tablet) {
     ol {
-      margin: 7rem 0 6rem;
+      margin: 7rem 0;
 
       > li {
         margin-bottom: 6rem;
@@ -91,7 +91,7 @@ article {
     }
 
     .video-container {
-      margin: 2rem 0;
+      margin: 2rem 0 3rem;
     }
   }
 }
@@ -133,7 +133,7 @@ article {
   }
 
   @media (max-width: $tablet) {
-    margin: 6rem 0;
+    margin: 8rem 0;
   }
 }
 
@@ -224,7 +224,7 @@ $votes-shadow: 0 9px 14px -9px rgba(0, 0, 0, .5);
 
     > .btn {
       width: 75px;
-      height: 55px;
+      height: 60px;
       font-size: 2.4rem;
     }
   }
@@ -263,9 +263,10 @@ $votes-shadow: 0 9px 14px -9px rgba(0, 0, 0, .5);
   [type="submit"] {
     margin-top: 20px;
   }
-  padding: 10px 40px 40px;
 
   @media (max-width: $tablet) {
+    padding: 10px 20px 40px;
+
     .title,
     label span,
     textarea {
@@ -275,6 +276,7 @@ $votes-shadow: 0 9px 14px -9px rgba(0, 0, 0, .5);
     }
 
     .title {
+      margin-top: 0;
       margin-bottom: 15px;
     }
 
